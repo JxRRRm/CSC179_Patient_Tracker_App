@@ -25,74 +25,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/nav_view"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:navGraph="@navigation/mobile_navigation" />
 
-    <LinearLayout
-        android:layout_width="545dp"
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="64dp">
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="500dp"
-            android:layout_height="wrap_content"
-            android:text="Demographics" />
-
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="500dp"
-            android:layout_height="wrap_content"
-            android:text="Medical History" />
-
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="500dp"
-            android:layout_height="wrap_content"
-            android:text="Diagnosis" />
-
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="500dp"
-            android:layout_height="wrap_content"
-            android:text="Medications" />
-
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="500dp"
-            android:layout_height="wrap_content"
-            android:text="Order" />
-
-        <Button
-            android:id="@+id/button10"
-            android:layout_width="500dp"
-            android:layout_height="wrap_content"
-            android:text="Test Results" />
-
-        <Button
-            android:id="@+id/button11"
-            android:layout_width="500dp"
-            android:layout_height="wrap_content"
-            android:text="EMR" />
-
-        <Button
-            android:id="@+id/button12"
-            android:layout_width="500dp"
-            android:layout_height="wrap_content"
-            android:text="Set Current Patient" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="500dp"
-            android:layout_height="wrap_content"
-            android:text="Edit Info" />
-    </LinearLayout>
+        android:text="RadioButton"
+        tools:layout_editor_absoluteX="115dp"
+        tools:layout_editor_absoluteY="157dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

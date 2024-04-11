@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.CSC179_Patient_Tracker_App" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/primary_blue</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -12,5 +12,12 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:colorBackground">@color/light_blue</item>
+        <item name="editTextStyle">@style/editTextStyle</item>
+    </style>
+
+    <style name="editTextStyle" parent = "Widget.AppCompat.EditText">
+        <item name="android:elevation">4dp</item>
+        <item name="android:background">@drawable/rounded_edittext</item>
     </style>
 </resources>
