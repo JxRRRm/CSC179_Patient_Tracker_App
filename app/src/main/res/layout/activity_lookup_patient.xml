@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/layout_border"
-    tools:context=".Create_Patient">
+    tools:context=".Lookup_Patient">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -17,23 +17,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="New Patient?" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="4sp"
-            android:layout_weight="0"
-            android:text="Create"
-            android:textColor="@color/primary_blue"
-            android:textFontWeight="500" />
-    </LinearLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
@@ -41,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:layout_marginBottom="48dp"
-        android:text="Create Patient"
+        android:text="Lookup Patient"
         android:textColor="@color/primary_blue"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -123,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="CREATE" />
+            android:text="Search " />
 
     </LinearLayout>
 
