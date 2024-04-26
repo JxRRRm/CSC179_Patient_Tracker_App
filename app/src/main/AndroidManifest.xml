@@ -12,9 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CSC179_Patient_Tracker_App"
         tools:targetApi="31">
-
         <activity
-            android:name= ".Demographics_Page"
+            android:name=".MedicalHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserLoginPage"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
@@ -23,6 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".NewUserRegistrationActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

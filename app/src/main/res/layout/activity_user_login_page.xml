@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/layout_border"
     android:paddingVertical="@dimen/cardview_default_radius"
-    tools:context=".Patient_Login_Page">
+    tools:context=".UserLoginPage">
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,6 +39,7 @@
             android:text="New to App?" />
 
         <TextView
+            android:id="@+id/link_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4sp"
