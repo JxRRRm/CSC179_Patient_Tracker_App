@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
-    <Button
-        android:id="@+id/button46"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="128dp"
-        android:text="Search Patient"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/textView115"
         android:layout_width="wrap_content"
@@ -34,19 +24,19 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/button45"
+        app:layout_constraintBottom_toTopOf="@+id/button_create_patient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView115"
         tools:listitem="@layout/item_appointment" />
 
     <Button
-        android:id="@+id/button45"
+        android:id="@+id/button_create_patient"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="156dp"
         android:text="Add new Patient"
-        app:layout_constraintBottom_toTopOf="@+id/button46"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

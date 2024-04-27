@@ -13,10 +13,16 @@
         android:theme="@style/Theme.CSC179_Patient_Tracker_App"
         tools:targetApi="31">
         <activity
+            android:name=".MenuPaage"
+            android:exported="false" />
+        <activity
             android:name=".MedicalHistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".UserLoginPage"
+            android:name=".CreatePatient"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
