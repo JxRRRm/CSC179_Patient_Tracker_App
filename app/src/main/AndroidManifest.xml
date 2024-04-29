@@ -13,6 +13,12 @@
         android:theme="@style/Theme.CSC179_Patient_Tracker_App"
         tools:targetApi="31">
         <activity
+            android:name=".LabReports"
+            android:exported="false" />
+        <activity
+            android:name=".Medications"
+            android:exported="false" />
+        <activity
             android:name=".MenuPaage"
             android:exported="false" />
         <activity
