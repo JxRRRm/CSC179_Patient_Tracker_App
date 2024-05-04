@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/layout_border"
-    tools:context=".CreatePatient">
+    tools:context=".CreatePatientActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -53,61 +53,65 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextText2"
+                android:id="@+id/et_firstName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="First Initial"
+                android:hint="@string/FirstName"
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/editTextText7"
+                android:id="@+id/et_middleName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Middle Initial"
+                android:hint="@string/MiddleName"
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/editTextText8"
+                android:id="@+id/et_lastName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Last Initial"
+                android:hint="@string/LastName"
                 android:inputType="text" />
         </LinearLayout>
 
         <EditText
+            android:id="@+id/et_dob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="DOB\tMM/DD/YYYY"
-            android:inputType="datetime|date" />
+            android:hint="@string/DOB"
+            android:inputType="date" />
 
         <EditText
+            android:id="@+id/et_phonenumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Medical ID"
-            android:inputType="text" />
+            android:hint="@string/PhoneNumber"
+            android:inputType="phone" />
 
         <EditText
+            android:id="@+id/et_emailaddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Some other ID#"
-            android:inputType="text" />
+            android:hint="@string/EmailAddress"
+            android:inputType="textEmailAddress" />
 
         <Button
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="CREATE" />
+            android:text="Register" />
 
     </LinearLayout>
 

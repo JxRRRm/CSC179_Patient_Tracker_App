@@ -6,7 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/layout_border"
-    tools:context=".MenuPaage">
+    tools:context=".OrderActivity">
+
+    <TextView
+        android:id="@+id/tv_Demographics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Order"
+        android:textColor="@color/primary_blue"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/view"
@@ -16,7 +28,7 @@
         android:layout_marginBottom="71dp"
         android:background="@color/primary_blue"
         app:layout_constraintBottom_toTopOf="@+id/back"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Demographics"
         tools:layout_editor_absoluteX="0dp" />
 
     <LinearLayout
@@ -36,37 +48,26 @@
             android:id="@+id/button13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Demographics " />
+            android:text="Medication " />
 
         <Button
             android:id="@+id/button14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Medical History" />
+            android:text="Blood Test " />
 
         <Button
             android:id="@+id/button15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Diagnosis" />
+            android:text="Radiology" />
 
         <Button
             android:id="@+id/button17"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Medications" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Order" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Lab Reports" />
+            android:text="Other Tests " />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

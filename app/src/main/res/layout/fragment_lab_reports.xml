@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/layout_border"
-    tools:context=".Order_Page">
+    tools:context=".LabReportsActivity">
 
     <TextView
         android:id="@+id/textView5"
@@ -48,7 +47,7 @@
             android:id="@+id/button13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Medication " />
+            android:text="Recent Results " />
 
         <Button
             android:id="@+id/button14"

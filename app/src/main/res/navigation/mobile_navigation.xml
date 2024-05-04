@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_dashboard" >
         <action
             android:id="@+id/action_navigation_dashboard_to_create_patient"
-            app:destination="@id/create_patient" />
+            app:destination="@id/navigation_createPatient" />
     </fragment>
 
     <fragment
@@ -23,12 +23,12 @@
 
     <fragment
         android:id="@+id/navigation_appointment"
-        android:name="com.example.csc179_patient_tracker_app.ui.notifications.NotificationsFragment"
+        android:name="com.example.csc179_patient_tracker_app.ui.appointment.NewAppointmentFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_new_appointment" />
     <activity
-        android:id="@+id/create_patient"
-        android:name="com.example.csc179_patient_tracker_app.CreatePatient"
+        android:id="@+id/navigation_createPatient"
+        android:name="com.example.csc179_patient_tracker_app.CreatePatientActivity"
         android:label="activity_create_patient"
-        tools:layout="@layout/activity_create_patient" />
+        tools:layout="@layout/fragment_create_patient" />
 </navigation>
