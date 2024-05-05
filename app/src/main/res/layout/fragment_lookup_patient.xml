@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="First Initial"
+                android:hint="@string/FirstName"
                 android:inputType="text" />
 
             <EditText
@@ -69,7 +69,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Middle Initial"
+                android:hint="@string/MiddleName"
                 android:inputType="text" />
 
             <EditText
@@ -78,32 +78,36 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Last Initial"
+                android:hint="@string/LastName"
                 android:inputType="text" />
         </LinearLayout>
 
         <EditText
+            android:id="@+id/et_dob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="DOB\tMM/DD/YYYY"
-            android:inputType="datetime|date" />
+            android:hint="@string/DOB"
+            android:inputType="date" />
 
         <EditText
+            android:id="@+id/et_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Medical ID"
+            android:hint="@string/PhoneNumber"
             android:inputType="text" />
 
         <EditText
+            android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Some other ID#"
-            android:inputType="text" />
+            android:hint="@string/EmailAddress"
+            android:inputType="textEmailAddress" />
 
         <Button
+            android:id="@+id/btn_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -114,7 +118,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="409dp"
         android:layout_height="267dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="463dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

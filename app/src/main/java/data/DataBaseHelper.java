@@ -95,13 +95,32 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         else {
             // failure. do not add anything to the list.
         }
-
         // close both the cursor and the db when done.
         cursor.close();
         db.close();
 
-
         return returnList;
     }
 
+    public List<PatientModel> searchPatients(String query) {
+        List<PatientModel> patients = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM patients WHERE name LIKE ?", new String[]{"%" + query + "%"});
+        if (cursor.moveToFirst()) {
+            do {
+                PatientModel patient = new PatientModel();
+                patient.setId(cursor.getInt(0));
+                patient.setFirstName(cursor.getString(1));
+                patient.setMiddleName(cursor.getString(2));
+                patient.setLastName(cursor.getString(3));
+                patient.setDob(cursor.getString(4));
+                patient.setPhone(cursor.getString(5));
+                patient.setEmail(cursor.getString(6));
+                patient.setIsNew(cursor.getInt(7) == 1 ? true : false);
+                patients.add(patient);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return patients;
+    }
 }

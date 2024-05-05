@@ -14,7 +14,6 @@ import androidx.core.view.WindowInsetsCompat;
 import data.DataBaseHelper;
 import data.PatientModel;
 
-
 public class CreatePatientActivity extends AppCompatActivity {
     Button btn_register;
     EditText et_firstName, et_middleName, et_lastName, et_dob,  et_phone, et_email;
@@ -34,8 +33,8 @@ public class CreatePatientActivity extends AppCompatActivity {
         et_middleName = findViewById(R.id.et_middleName);
         et_lastName = findViewById(R.id.et_lastName);
         et_dob =findViewById(R.id.et_dob);
-        et_phone = findViewById(R.id.et_phonenumber);
-        et_email = findViewById(R.id.et_emailaddress);
+        et_phone = findViewById(R.id.et_phone);
+        et_email = findViewById(R.id.et_email);
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,8 +56,5 @@ public class CreatePatientActivity extends AppCompatActivity {
                 Toast.makeText(CreatePatientActivity.this, "Patient Registered!", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
-
-
 }
