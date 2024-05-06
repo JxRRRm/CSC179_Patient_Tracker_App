@@ -21,7 +21,6 @@ public class DashboardFragment extends Fragment {
     private FragmentDashboardBinding binding;
     private NavController navController;
 
-    private Button createPatientButton;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -32,15 +31,6 @@ public class DashboardFragment extends Fragment {
         View root = binding.getRoot();
 
         navController = NavHostFragment.findNavController(this);
-
-        createPatientButton = root.findViewById(R.id.button_create_patient);
-
-        createPatientButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_navigation_dashboard_to_create_patient);
-            }
-        });
 
         return root;
     }

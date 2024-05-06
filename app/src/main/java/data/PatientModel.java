@@ -1,46 +1,96 @@
 package data;
 
-public class PatientModel {
-    private int id;
-    private String firstName, middleName, lastName, dob, phone, email;
-    private boolean isNewPatient;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import java.util.Date;
 
-    // Constructors
-    public PatientModel(int id, String firstName, String middleName, String lastName, String dob, String phone, String email, boolean isNewPatient) {
+@Entity
+public class PatientModel {
+    @PrimaryKey
+    public long id; // Adjust data type if necessary
+    public String firstName, middleName, lastName, phone, email;
+    public Date dob;
+    public boolean isNewPatient;
+
+    // Constructor, getters, and setters can also be added if needed
+
+    public PatientModel() {
+    }
+
+    public PatientModel(long id, String firstName, String middleName, String lastName, Date dob, String phone, String email, boolean isNewPatient) {
         this.id = id;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
-        this.dob = dob;
         this.phone = phone;
         this.email = email;
+        this.dob = dob;
         this.isNewPatient = isNewPatient;
     }
-    public PatientModel() {
+
+    public long getId() {
+        return id;
     }
 
-    // Getters
-    public int getId() { return id; }
-    public String getFirstName() { return firstName; }
-    public String getMiddleName() { return middleName;}
-    public void setDob(String dob) { this.dob = dob;}
-    public String getLastName() { return lastName; }
-    public String getDob() { return dob; }
-    public String getPhone() { return phone; }
-    public String getEmail() { return email;}
-    public boolean isNew() { return isNewPatient;}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    // Setters
-    public void setId(int id) { this.id = id; }
-    public void setFirstName(String firstName) { this.firstName = firstName;}
-    public void setMiddleName(String middleName) { this.middleName = middleName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
-    public void setPhone(String phone) { this.phone = phone; }
-    public void setEmail(String email) { this.email = email;}
-    public void setIsNew(boolean newPatient) { isNewPatient = newPatient; }
+    public String getFirstName() {
+        return firstName;
+    }
 
-    // To string
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public boolean isNewPatient() {
+        return isNewPatient;
+    }
+
+    public void setNewPatient(boolean newPatient) {
+        isNewPatient = newPatient;
+    }
 
     @Override
     public String toString() {
@@ -49,9 +99,9 @@ public class PatientModel {
                 ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", dob='" + dob + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", dob=" + dob +
                 ", isNewPatient=" + isNewPatient +
                 '}';
     }
