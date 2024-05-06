@@ -19,9 +19,6 @@
             android:name=".MedicationsActivity"
             android:exported="false" />
         <activity
-            android:name=".MenuActivity"
-            android:exported="false" />
-        <activity
             android:name=".MedicalHistoryActivity"
             android:exported="false" />
         <activity

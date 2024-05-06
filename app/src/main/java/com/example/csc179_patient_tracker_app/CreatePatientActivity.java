@@ -11,8 +11,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import data.DataBaseHelper;
-import data.PatientModel;
+import com.example.csc179_patient_tracker_app.data.DataBaseHelper;
+import com.example.csc179_patient_tracker_app.data.PatientModel;
 
 
 public class CreatePatientActivity extends AppCompatActivity {

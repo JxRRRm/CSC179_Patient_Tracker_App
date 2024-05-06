@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.csc179_patient_tracker_app.R;
 import com.example.csc179_patient_tracker_app.databinding.FragmentDashboardBinding;
@@ -22,6 +24,7 @@ public class DashboardFragment extends Fragment {
     private NavController navController;
 
     private Button createPatientButton;
+    private RecyclerView appointmentRecycler;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class DashboardFragment extends Fragment {
         navController = NavHostFragment.findNavController(this);
 
         createPatientButton = root.findViewById(R.id.button_create_patient);
+        appointmentRecycler = root.findViewById(R.id.appointment_recycler);
 
         createPatientButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +45,12 @@ public class DashboardFragment extends Fragment {
                 navController.navigate(R.id.action_navigation_dashboard_to_create_patient);
             }
         });
+
+        appointmentRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        appointmentRecycler.setAdapter(new AppointmentRecyclerAdapter(dashboardViewModel.getAppointments(), (appt) -> {
+            DashboardFragmentDirections.ActionNavigationDashboardToNavigationMenu action = DashboardFragmentDirections.actionNavigationDashboardToNavigationMenu(appt);
+            navController.navigate(action);
+        }));
 
         return root;
     }

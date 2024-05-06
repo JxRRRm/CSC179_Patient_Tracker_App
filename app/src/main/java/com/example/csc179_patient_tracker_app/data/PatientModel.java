@@ -1,6 +1,11 @@
-package data;
+package com.example.csc179_patient_tracker_app.data;
 
-public class PatientModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class PatientModel implements Parcelable {
     private int id;
     private String firstName, middleName, lastName, dob, phone, email;
     private boolean isNewPatient;
@@ -18,6 +23,29 @@ public class PatientModel {
     }
     public PatientModel() {
     }
+
+    protected PatientModel(Parcel in) {
+        id = in.readInt();
+        firstName = in.readString();
+        middleName = in.readString();
+        lastName = in.readString();
+        dob = in.readString();
+        phone = in.readString();
+        email = in.readString();
+        isNewPatient = in.readByte() != 0;
+    }
+
+    public static final Creator<PatientModel> CREATOR = new Creator<PatientModel>() {
+        @Override
+        public PatientModel createFromParcel(Parcel in) {
+            return new PatientModel(in);
+        }
+
+        @Override
+        public PatientModel[] newArray(int size) {
+            return new PatientModel[size];
+        }
+    };
 
     // Getters
     public int getId() { return id; }
@@ -54,5 +82,22 @@ public class PatientModel {
                 ", email='" + email + '\'' +
                 ", isNewPatient=" + isNewPatient +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(firstName);
+        dest.writeString(middleName);
+        dest.writeString(lastName);
+        dest.writeString(dob);
+        dest.writeString(phone);
+        dest.writeString(email);
+        dest.writeByte((byte) (isNewPatient ? 1 : 0));
     }
 }

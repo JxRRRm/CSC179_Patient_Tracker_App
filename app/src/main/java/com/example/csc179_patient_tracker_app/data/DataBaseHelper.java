@@ -1,4 +1,4 @@
-package data;
+package com.example.csc179_patient_tracker_app.data;
 
 import android.content.ContentValues;
 import android.content.Context;
