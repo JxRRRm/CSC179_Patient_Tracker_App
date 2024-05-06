@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 public class PatientModel {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public long id; // Adjust data type if necessary
     public String firstName, middleName, lastName, phone, email;
     public Date dob;

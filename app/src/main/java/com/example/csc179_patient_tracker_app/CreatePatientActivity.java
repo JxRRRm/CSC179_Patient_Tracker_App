@@ -1,6 +1,7 @@
 package com.example.csc179_patient_tracker_app;
 
 import android.app.DatePickerDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.MotionEvent;
@@ -26,7 +27,6 @@ public class CreatePatientActivity extends AppCompatActivity {
     Button btn_register;
     EditText et_firstName, et_middleName, et_lastName, et_dob,  et_phone, et_email;
     private Calendar calendar;
-    PatientDao patientDao = MyApp.getDatabaseInstance().patientDao();
 // Use patientDao to perform database operations...
 
     @Override
@@ -66,11 +66,9 @@ public class CreatePatientActivity extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-
-                PatientModel patient = new PatientModel();
-
                 try {
+                    PatientModel patient = new PatientModel();
+
                     // Convert the Editable object to a String
                     String dobText = et_dob.getText().toString();
                     // Create a SimpleDateFormat object to parse the date
@@ -79,28 +77,26 @@ public class CreatePatientActivity extends AppCompatActivity {
                     Date dob = dateFormat.parse(dobText);
 
                     patient.firstName = et_firstName.getText().toString();
-                    patient.lastName = et_middleName.getText().toString();
+                    patient.middleName = et_middleName.getText().toString(); // Corrected variable name
                     patient.lastName = et_lastName.getText().toString();
                     patient.dob = dob;
                     patient.phone = et_phone.getText().toString();
                     patient.email = et_email.getText().toString();
                     patient.isNewPatient = true;
                     // Set other properties as needed...
+                    // Launch a coroutine in the IO context
+                    new InsertPatientTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, patient);
 
-                    PatientDao patientDao = MyApp.getDatabaseInstance().patientDao();
-                    patientDao.insertPatient(patient);
 
-                    Toast.makeText(CreatePatientActivity.this, patient.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreatePatientActivity.this, "Patient Registered!", Toast.LENGTH_SHORT).show();
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace(); // Print stack trace for debugging
+                    Toast.makeText(CreatePatientActivity.this, "Error registering patient!", Toast.LENGTH_SHORT).show();
                 }
-                catch (Exception e){
-                    Toast.makeText(CreatePatientActivity.this, "!!", Toast.LENGTH_SHORT).show();
-                    patient = new PatientModel(-1, "error", "error", "error", null, "error", "error",false);
-                }
-
-                Toast.makeText(CreatePatientActivity.this, "Patient Registered!", Toast.LENGTH_SHORT).show();
-
             }
         });
+
     }
 
     private void showDatePickerDialog() {
@@ -124,5 +120,14 @@ public class CreatePatientActivity extends AppCompatActivity {
         String dateFormat = "dd/MM/yyyy"; // Specify your date format here
         SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.getDefault());
         et_dob.setText(sdf.format(calendar.getTime()));
+    }
+
+    private static class InsertPatientTask extends AsyncTask<PatientModel, Void, Void> {
+        @Override
+        protected Void doInBackground(PatientModel... patients) {
+            PatientDao patientDao = MyApp.getDatabaseInstance().patientDao();
+            patientDao.insertPatient(patients[0]);
+            return null;
+        }
     }
 }
