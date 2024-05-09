@@ -13,13 +13,31 @@
         android:theme="@style/Theme.CSC179_Patient_Tracker_App"
         tools:targetApi="31">
         <activity
-            android:name=".LabReportsActivity"
+            android:name=".AppoimentdeatilsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpcomingappointmentspageActivity"
+            android:exported="false" /> <!-- Add this activity declaration -->
+        <activity
+            android:name=".GeneralPatientInformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateAnAppointmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AnalysisPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HealthConditionsActivity"
             android:exported="false" />
         <activity
             android:name=".MedicationsActivity"
             android:exported="false" />
         <activity
-            android:name=".MedicalHistoryActivity"
+            android:name=".NewPatientInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LabReportsActivity"
             android:exported="false" />
         <activity
             android:name=".CreatePatientActivity"

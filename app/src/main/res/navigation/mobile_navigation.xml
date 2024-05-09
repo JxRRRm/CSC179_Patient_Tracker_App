@@ -37,10 +37,50 @@
         <argument
             android:name="appointment"
             app:argType="com.example.csc179_patient_tracker_app.data.AppointmentModel" />
+        <action
+            android:id="@+id/action_navigation_menu_to_generalPatientInformationActivity"
+            app:destination="@id/generalPatientInformationActivity" />
+        <action
+            android:id="@+id/action_navigation_menu_to_healthConditionsActivity"
+            app:destination="@id/healthConditionsActivity" />
+        <action
+            android:id="@+id/action_navigation_menu_to_analysisPageActivity"
+            app:destination="@id/analysisPageActivity" />
+        <action
+            android:id="@+id/action_navigation_menu_to_labReportsActivity"
+            app:destination="@id/labReportsActivity" />
+        <action
+            android:id="@+id/action_navigation_menu_to_upcomingappointmentspageActivity"
+            app:destination="@id/upcomingappointmentspageActivity" />
     </fragment>
     <activity
         android:id="@+id/navigation_createPatient"
         android:name="com.example.csc179_patient_tracker_app.CreatePatientActivity"
         android:label="activity_create_patient"
         tools:layout="@layout/fragment_create_patient" />
+    <activity
+        android:id="@+id/generalPatientInformationActivity"
+        android:name="com.example.csc179_patient_tracker_app.GeneralPatientInformationActivity"
+        android:label="fragment_generalpatientinformation_page"
+        tools:layout="@layout/fragment_generalpatientinformation_page" />
+    <activity
+        android:id="@+id/healthConditionsActivity"
+        android:name="com.example.csc179_patient_tracker_app.HealthConditionsActivity"
+        android:label="fragment_healthconditions"
+        tools:layout="@layout/fragment_healthconditions" />
+    <activity
+        android:id="@+id/analysisPageActivity"
+        android:name="com.example.csc179_patient_tracker_app.AnalysisPageActivity"
+        android:label="AnalysisPageActivity" />
+    <activity
+        android:id="@+id/labReportsActivity"
+        android:name="com.example.csc179_patient_tracker_app.LabReportsActivity"
+        android:label="fragment_lab_reports"
+        tools:layout="@layout/fragment_lab_reports" />
+    <activity
+        android:id="@+id/upcomingappointmentspageActivity"
+        android:name="com.example.csc179_patient_tracker_app.UpcomingappointmentspageActivity"
+        android:label="upcomingappointmentspage"
+        tools:layout="@layout/upcomingappointmentspage" />
+
 </navigation>

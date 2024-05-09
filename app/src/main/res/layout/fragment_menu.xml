@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -39,27 +40,17 @@
             android:textAlignment="center"
             android:textColor="@color/primary_blue"
             android:textSize="48sp" />
-
-        <TextView
-            android:id="@+id/gender_text"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="Gender"
-            android:textAlignment="center"
-            android:textColor="@color/primary_blue"
-            android:textSize="48sp" />
     </LinearLayout>
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/view3"
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="71dp"
         android:background="@color/primary_blue"
         app:layout_constraintBottom_toTopOf="@+id/back"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/name_text"
         tools:layout_editor_absoluteX="0dp" />
 
     <LinearLayout
@@ -76,40 +67,41 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button13"
+            android:id="@+id/button_general_patient_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Demographics " />
+            android:text="General Patient Information" />
 
         <Button
-            android:id="@+id/button14"
+            android:id="@+id/button_health_condition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Medical History" />
+            android:text="Health Conditions" />
 
         <Button
-            android:id="@+id/button15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Diagnosis" />
-
-        <Button
-            android:id="@+id/button17"
+            android:id="@+id/button_medications"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Medications" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button_analysis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Order" />
+            android:text="Analysis" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/button_lab_reports"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Lab Reports" />
 
+        <Button
+            android:id="@+id/button_upcoming_appointments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upcoming Appointments" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

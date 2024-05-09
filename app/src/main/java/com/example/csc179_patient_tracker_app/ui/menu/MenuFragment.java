@@ -1,24 +1,26 @@
+// MenuFragment.java
 package com.example.csc179_patient_tracker_app.ui.menu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
+import com.example.csc179_patient_tracker_app.AnalysisPageActivity;
+import com.example.csc179_patient_tracker_app.GeneralPatientInformationActivity;
+import com.example.csc179_patient_tracker_app.HealthConditionsActivity;
+import com.example.csc179_patient_tracker_app.LabReportsActivity;
+import com.example.csc179_patient_tracker_app.MedicationsActivity;
 import com.example.csc179_patient_tracker_app.R;
+import com.example.csc179_patient_tracker_app.UpcomingappointmentspageActivity;
 import com.example.csc179_patient_tracker_app.data.AppointmentModel;
 import com.example.csc179_patient_tracker_app.data.PatientModel;
-import com.example.csc179_patient_tracker_app.databinding.FragmentHomeBinding;
 import com.example.csc179_patient_tracker_app.databinding.FragmentMenuBinding;
-import com.example.csc179_patient_tracker_app.ui.home.HomeViewModel;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -26,29 +28,74 @@ import java.time.temporal.ChronoUnit;
 public class MenuFragment extends Fragment {
 
     private FragmentMenuBinding binding;
-
     private TextView ageText;
     private TextView nameText;
-    private TextView genderText;
-
     private AppointmentModel appointment;
     private PatientModel patient;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    @NonNull
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate using View Binding
         binding = FragmentMenuBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        this.ageText = root.findViewById(R.id.age_text);
-        this.nameText = root.findViewById(R.id.name_text);
-        this.genderText = root.findViewById(R.id.gender_text);
+        // Assign TextViews using View Binding
+        ageText = binding.ageText;
+        nameText = binding.nameText;
 
-        this.appointment = getArguments().getParcelable("appointment");
-        this.patient = this.appointment.getPatient();
+        // Retrieve appointment from arguments
+        appointment = getArguments().getParcelable("appointment");
+        if (appointment != null) {
+            patient = appointment.getPatient();
 
-        DateTimeFormatter parser = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        this.ageText.setText(String.format("Age: %d", ChronoUnit.YEARS.between(LocalDate.parse(patient.getDob(), parser), LocalDate.now())));
-        this.nameText.setText(String.format("%s %s %s", patient.getFirstName(), patient.getMiddleName(), patient.getLastName()));
+            DateTimeFormatter parser = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            LocalDate dob = LocalDate.parse(patient.getDob(), parser);
+            long age = ChronoUnit.YEARS.between(dob, LocalDate.now());
+
+            ageText.setText(String.format("Age: %d", age));
+            nameText.setText(String.format("%s %s %s", patient.getFirstName(), patient.getMiddleName(), patient.getLastName()));
+        }
+
+        // Set click listener for the "General Patient Information" button
+        binding.buttonGeneralPatientInfo.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), GeneralPatientInformationActivity.class);
+            startActivity(intent);
+        });
+
+        // Set click listener for the "Health Conditions" button
+        binding.buttonHealthCondition.setOnClickListener(v -> {
+            // Replace with your desired activity or fragment
+            Intent intent = new Intent(getActivity(), HealthConditionsActivity.class); // Example activity
+            startActivity(intent);
+        });
+
+        // Set click listener for the "Health Conditions" button
+        binding.buttonMedications.setOnClickListener(v -> {
+            // Replace with your desired activity or fragment
+            Intent intent = new Intent(getActivity(), MedicationsActivity.class); // Example activity
+            startActivity(intent);
+        });
+        // Set click listener for the "Health Conditions" button
+        binding.buttonAnalysis.setOnClickListener(v -> {
+            // Replace with your desired activity or fragment
+            Intent intent = new Intent(getActivity(), AnalysisPageActivity.class); // Example activity
+            startActivity(intent);
+        });
+        // Set click listener for the "Health Conditions" button
+        binding.buttonLabReports.setOnClickListener(v -> {
+            // Replace with your desired activity or fragment
+            Intent intent = new Intent(getActivity(), LabReportsActivity.class); // Example activity
+            startActivity(intent);
+        });
+
+        // Set click listener for the "Health Conditions" button
+        binding.buttonUpcomingAppointments.setOnClickListener(v -> {
+            // Replace with your desired activity or fragment
+            Intent intent = new Intent(getActivity(), UpcomingappointmentspageActivity.class); // Example activity
+            startActivity(intent);
+        });
+
 
         return root;
     }

@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/layout_border"
-    tools:context=".DemographicsActivity">
+    tools:context=".NewPatientInfoActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -22,12 +21,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_Demographics"
+        android:id="@+id/App"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:layout_marginBottom="48dp"
-        android:text="Demographics"
+        android:text="New Patient Information"
         android:textColor="@color/primary_blue"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -47,7 +46,7 @@
         android:showDividers="middle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Demographics">
+        app:layout_constraintTop_toBottomOf="@+id/App">
 
         <TextView
             android:layout_width="match_parent"
@@ -141,19 +140,19 @@
                 android:layout_width="197dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Race" />
+                android:text="Blood Group" />
 
             <TextView
                 android:layout_width="278dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Ethnicity" />
+                android:text="RH Factor" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Pref. Language" />
+                android:text="Age" />
 
         </LinearLayout>
 
@@ -180,7 +179,6 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/et_lastName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -381,7 +379,39 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="text" />
+
         </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="2dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Zip Code" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="1080dp"
+        android:layout_marginEnd="64dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registar " />
 
     </LinearLayout>
 
@@ -395,5 +425,4 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,7 +35,7 @@ public class CreatePatientActivity extends AppCompatActivity {
         et_lastName = findViewById(R.id.et_lastName);
         et_dob =findViewById(R.id.et_dob);
         et_phone = findViewById(R.id.et_phonenumber);
-        et_email = findViewById(R.id.et_emailaddress);
+        et_email = findViewById(R.id.et_medicalId);
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
