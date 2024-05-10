@@ -9,7 +9,7 @@
         android:id="@+id/navigation_dashboard"
         android:name="com.example.csc179_patient_tracker_app.ui.dashboard.DashboardFragment"
         android:label="Dashboard"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_navigation_dashboard_to_create_patient"
             app:destination="@id/navigation_createPatient" />
@@ -21,19 +21,18 @@
     <fragment
         android:id="@+id/navigation_lookup"
         android:name="com.example.csc179_patient_tracker_app.ui.lookup.LookupPatient"
-        android:label="Lookup Patient"
-       />
+        android:label="Lookup Patient" />
 
     <fragment
         android:id="@+id/navigation_appointment"
         android:name="com.example.csc179_patient_tracker_app.ui.appointment.NewAppointmentFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_new_appointment" />
+        android:label="New Appointment" />
+
     <fragment
         android:id="@+id/navigation_menu"
         android:name="com.example.csc179_patient_tracker_app.ui.menu.MenuFragment"
         android:label="Menu"
-        tools:layout="@layout/fragment_menu" >
+        tools:layout="@layout/fragment_menu">
         <argument
             android:name="appointment"
             app:argType="com.example.csc179_patient_tracker_app.data.AppointmentModel" />
@@ -76,11 +75,11 @@
         android:id="@+id/labReportsActivity"
         android:name="com.example.csc179_patient_tracker_app.LabReportsActivity"
         android:label="fragment_lab_reports"
-        tools:layout="@layout/fragment_lab_reports" />
+        tools:layout="@layout/activity_lab_reports" />
     <activity
         android:id="@+id/upcomingappointmentspageActivity"
-        android:name="com.example.csc179_patient_tracker_app.UpcomingappointmentspageActivity"
+        android:name="com.example.csc179_patient_tracker_app.UpcomingAppointmentsActivity"
         android:label="upcomingappointmentspage"
-        tools:layout="@layout/upcomingappointmentspage" />
+        tools:layout="@layout/activity_upcoming_appointments" />
 
 </navigation>

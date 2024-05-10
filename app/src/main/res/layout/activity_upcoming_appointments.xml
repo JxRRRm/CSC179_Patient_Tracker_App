@@ -3,14 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    style="bold"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/layout_border"
-    tools:context=".HealthConditionsActivity">
+    tools:context=".UpcomingAppointmentsActivity">
 
     <LinearLayout
-        android:id="@+id/back"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="64dp"
@@ -25,13 +22,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Current Illnesses :"
+            android:text="Doctor Visits :"
             android:textColor="@color/black" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/current_illnesses_field"
+            android:id="@+id/doctor_visits_field"
             android:layout_width="match_parent"
-            android:layout_height="226dp"
+            android:layout_height="313dp"
             android:background="@color/white"
             android:gravity="top"
             android:hint=" "
@@ -40,32 +37,22 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="Health Conditions"
+        android:text="Upcoming Appointments"
         android:textColor="@color/primary_blue"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/view3"
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="71dp"
-        android:background="@color/primary_blue"
-        app:layout_constraintBottom_toTopOf="@+id/back"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        tools:layout_editor_absoluteX="0dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="625dp"
         android:layout_marginEnd="64dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,13 +62,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Previous Illnesses :"
+            android:text="Vaccinations :"
             android:textColor="@color/black" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/previous_illnesses_field"
+            android:id="@+id/vaccinations_field"
             android:layout_width="match_parent"
-            android:layout_height="226dp"
+            android:layout_height="313dp"
             android:background="@color/white"
             android:gravity="top"
             android:hint=" "
@@ -92,36 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="800dp"
-        android:layout_marginEnd="64dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Specific Allergies :"
-            android:textColor="@color/black" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/specific_allergies_field"
-            android:layout_width="match_parent"
-            android:layout_height="226dp"
-            android:background="@color/white"
-            android:gravity="top"
-            android:hint=" "
-            android:lines="30" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="1090dp"
+        android:layout_marginTop="1060dp"
         android:layout_marginEnd="64dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -132,7 +90,8 @@
             android:id="@+id/save_edit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save " />
+            android:text="Edit" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

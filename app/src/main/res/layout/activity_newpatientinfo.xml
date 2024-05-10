@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/layout_border"
-    tools:context=".GeneralPatientInformationActivity">
+    tools:context=".NewPatientInfoActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -27,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:layout_marginBottom="48dp"
-        android:text="General Patient Information"
+        android:text="New Patient Information"
         android:textColor="@color/primary_blue"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -55,14 +54,7 @@
             android:layout_weight="1"
             android:text="Patient Id" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"></LinearLayout>
-
         <EditText
-            android:id="@+id/patient_id_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -75,14 +67,35 @@
             android:layout_weight="1"
             android:text="Full Name (first,last, middle)" />
 
-        <EditText
-            android:id="@+id/full_name_field"
-            android:layout_width="361dp"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:inputType="text" />
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="text" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="text" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="text" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -115,7 +128,6 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/dob_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -123,7 +135,6 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/gender_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -133,7 +144,6 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/marital_status_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -175,7 +185,6 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/blood_group_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -183,7 +192,6 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/rh_factor_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -193,7 +201,6 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/age_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -235,7 +242,6 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/address_field"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -243,7 +249,6 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/state_field"
                 android:layout_width="158dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -253,7 +258,6 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/zip_code_field"
                 android:layout_width="102dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -294,7 +298,6 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/phone_number_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -302,7 +305,6 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/mobile_number_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -312,7 +314,6 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/sms_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -328,7 +329,6 @@
             android:text="Email Address" />
 
         <EditText
-            android:id="@+id/email_address_field"
             android:layout_width="316dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -380,7 +380,6 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/emergency_full_name_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -388,7 +387,6 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/emergency_relation_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -398,7 +396,6 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/emergency_phone_number_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -408,6 +405,18 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="2dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Zip Code" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -421,10 +430,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/save_edit_button"
+            android:id="@+id/button11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit " />
+            android:text="Registar " />
 
     </LinearLayout>
 
@@ -438,5 +447,4 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

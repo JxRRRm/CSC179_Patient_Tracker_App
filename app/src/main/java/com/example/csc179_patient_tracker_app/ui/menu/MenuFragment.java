@@ -15,8 +15,7 @@ import com.example.csc179_patient_tracker_app.GeneralPatientInformationActivity;
 import com.example.csc179_patient_tracker_app.HealthConditionsActivity;
 import com.example.csc179_patient_tracker_app.LabReportsActivity;
 import com.example.csc179_patient_tracker_app.MedicationsActivity;
-import com.example.csc179_patient_tracker_app.R;
-import com.example.csc179_patient_tracker_app.UpcomingappointmentspageActivity;
+import com.example.csc179_patient_tracker_app.UpcomingAppointmentsActivity;
 import com.example.csc179_patient_tracker_app.data.AppointmentModel;
 import com.example.csc179_patient_tracker_app.data.PatientModel;
 import com.example.csc179_patient_tracker_app.databinding.FragmentMenuBinding;
@@ -92,7 +91,7 @@ public class MenuFragment extends Fragment {
         // Set click listener for the "Health Conditions" button
         binding.buttonUpcomingAppointments.setOnClickListener(v -> {
             // Replace with your desired activity or fragment
-            Intent intent = new Intent(getActivity(), UpcomingappointmentspageActivity.class); // Example activity
+            Intent intent = new Intent(getActivity(), UpcomingAppointmentsActivity.class); // Example activity
             startActivity(intent);
         });
 

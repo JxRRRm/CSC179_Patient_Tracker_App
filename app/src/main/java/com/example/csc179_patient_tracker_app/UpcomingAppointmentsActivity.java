@@ -11,23 +11,25 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class LabReportsActivity extends AppCompatActivity {
+public class UpcomingAppointmentsActivity extends AppCompatActivity {
     private boolean editMode = false;
-    private EditText labReport;
+    private EditText doctorVisits;
+    private EditText vaccinations;
     private Button saveEditButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_lab_reports);
+        setContentView(R.layout.activity_upcoming_appointments);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        labReport = findViewById(R.id.lab_report_field);
+        doctorVisits = findViewById(R.id.doctor_visits_field);
+        vaccinations = findViewById(R.id.vaccinations_field);
         saveEditButton = findViewById(R.id.save_edit_button);
 
         saveEditButton.setOnClickListener(new View.OnClickListener() {
@@ -44,19 +46,25 @@ public class LabReportsActivity extends AppCompatActivity {
         readMode();
     }
 
-    public void readMode() {
-        saveEditButton.setText("Edit");
+    private void readMode() {
         editMode = false;
-        labReport.setFocusable(false);
-        labReport.setFocusableInTouchMode(false);
-        labReport.setClickable(false);
+        saveEditButton.setText("Edit");
+        doctorVisits.setFocusable(false);
+        vaccinations.setFocusable(false);
+        doctorVisits.setFocusableInTouchMode(false);
+        vaccinations.setFocusableInTouchMode(false);
+        doctorVisits.setClickable(false);
+        vaccinations.setClickable(false);
     }
 
-    public void editMode() {
-        saveEditButton.setText("Save");
+    private void editMode() {
         editMode = true;
-        labReport.setFocusable(true);
-        labReport.setFocusableInTouchMode(true);
-        labReport.setClickable(true);
+        saveEditButton.setText("Save");
+        doctorVisits.setFocusable(true);
+        vaccinations.setFocusable(true);
+        doctorVisits.setFocusableInTouchMode(true);
+        vaccinations.setFocusableInTouchMode(true);
+        doctorVisits.setClickable(true);
+        vaccinations.setClickable(true);
     }
 }
