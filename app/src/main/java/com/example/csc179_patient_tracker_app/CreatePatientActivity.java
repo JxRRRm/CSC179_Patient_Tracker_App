@@ -11,7 +11,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.csc179_patient_tracker_app.data.DataBaseHelper;
 import com.example.csc179_patient_tracker_app.data.PatientModel;
 
 
@@ -42,17 +41,17 @@ public class CreatePatientActivity extends AppCompatActivity {
                 PatientModel patientModel;
 
                 try {
-                    patientModel = new PatientModel(-1, et_firstName.getText().toString(), et_middleName.getText().toString(), et_lastName.getText().toString(),
-                            et_dob.getText().toString(), et_phone.getText().toString(), et_email.getText().toString(), true);
+                    patientModel = new PatientModel( et_firstName.getText().toString(), et_middleName.getText().toString(), et_lastName.getText().toString(),
+                            et_dob.getText().toString(), et_phone.getText().toString(), et_email.getText().toString());
                     Toast.makeText(CreatePatientActivity.this, patientModel.toString(), Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e){
                     Toast.makeText(CreatePatientActivity.this, "!!", Toast.LENGTH_SHORT).show();
-                    patientModel = new PatientModel(-1, "error", "error", "error", "error", "error", "error",false);
+                    //patientModel = new PatientModel(-1, "error", "error", "error", "error", "error", "error",false);
                 }
 
-                DataBaseHelper dataBaseHelper = new DataBaseHelper(CreatePatientActivity.this);
-                boolean success = dataBaseHelper.addOne(patientModel);
+                // dataBaseHelper = new DataBaseHelper(CreatePatientActivity.this);
+                // boolean success = dataBaseHelper.addOne(patientModel);
 
                 Toast.makeText(CreatePatientActivity.this, "Patient Registered!", Toast.LENGTH_SHORT).show();
             }

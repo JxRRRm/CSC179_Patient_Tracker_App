@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class AppointmentRecyclerAdapter extends RecyclerView.Adapter<AppointmentRecyclerAdapter.AppointmentRecyclerHolder> {
+
     private List<AppointmentModel> appointments;
     private Consumer<AppointmentModel> onClickConsumer;
 
@@ -40,12 +41,13 @@ public class AppointmentRecyclerAdapter extends RecyclerView.Adapter<Appointment
 
     @Override
     public void onBindViewHolder(@NonNull AppointmentRecyclerHolder holder, int position) {
+
         AppointmentModel appointment = appointments.get(position);
 
         PatientModel patient = appointment.getPatient();
         String patientName = String.format("%s, %s %s", patient.getLastName(), patient.getFirstName(), patient.getMiddleName());
         String reason = appointment.getReason();
-        String date = LocalDate.ofEpochDay(appointment.getDate()).format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+        String date = appointment.getDate();
 
         String appointmentText = String.format("Patient: %s Reason: %s Date: %s", patientName, reason, date);
 
@@ -54,6 +56,7 @@ public class AppointmentRecyclerAdapter extends RecyclerView.Adapter<Appointment
             public void onClick(View v) {
                 onClickConsumer.accept(appointment);
             }
+
         });
 
         holder.appointmentText.setText(appointmentText);

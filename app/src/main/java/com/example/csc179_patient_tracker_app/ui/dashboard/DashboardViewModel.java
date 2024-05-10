@@ -12,16 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DashboardViewModel extends ViewModel {
-    private final PatientModel bob = new PatientModel(0, "Bob", "", "Smith", "12/25/1995", "123-456-7890", "bob@example.com", true);
-    private final PatientModel alice = new PatientModel(1, "Alice", "", "Smith", "02/29/1975", "333-333-3333", "alice@example.com", false);
-    private final PatientModel john = new PatientModel(2, "John", "", "Doe", "01/31/1987", "777-777-7777", "john@example.com", true);
+    private final PatientModel bob = new PatientModel( "Bob", "", "Smith", "12/25/1995", "123-456-7890", "bob@example.com");
+    private final PatientModel alice = new PatientModel("Alice", "", "Smith", "02/29/1975", "333-333-3333", "alice@example.com");
+    private final PatientModel john = new PatientModel("John", "", "Doe", "01/31/1987", "777-777-7777", "john@example.com");
 
     private final List<AppointmentModel> appointments = new ArrayList<>();
 
     {
-        appointments.add(new AppointmentModel(bob, "Annual checkup", LocalDate.of(2024, 5, 23).toEpochDay()));
-        appointments.add(new AppointmentModel(alice, "Vaccination", LocalDate.of(2024, 6, 12).toEpochDay()));
-        appointments.add(new AppointmentModel(john, "Cough", LocalDate.of(2024, 5, 20).toEpochDay()));
+        appointments.add(new AppointmentModel(1,"2024/5/23", "07:00","Annual checkup"));
+        appointments.add(new AppointmentModel(2,"2024/6/12", "13:00", "Vaccination"));
+        appointments.add(new AppointmentModel(3, "2024/5/20", "21:00","Cough"));
     }
 
     private final MutableLiveData<String> mText;
