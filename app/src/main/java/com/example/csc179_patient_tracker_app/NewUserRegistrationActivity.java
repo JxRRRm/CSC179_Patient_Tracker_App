@@ -42,13 +42,14 @@ public class NewUserRegistrationActivity extends AppCompatActivity {
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserModel user = new UserModel();
-                user.firstName  = et_firstName.getText().toString();
-                user.lastName  = et_lastName.getText().toString();
-                user.username = et_username.getText().toString();
-                user.password = et_password.getText().toString();
 
-                if (et_password.getText().toString().equals(et_confirmPw.getText().toString())) {
+                if (!et_firstName.getText().toString().trim().isEmpty() && !et_lastName.getText().toString().trim().isEmpty()
+                        && !et_username.getText().toString().trim().isEmpty() && et_password.getText().toString().equals(et_confirmPw.getText().toString())) {
+                    UserModel user = new UserModel();
+                    user.firstName  = et_firstName.getText().toString();
+                    user.lastName  = et_lastName.getText().toString();
+                    user.username = et_username.getText().toString();
+                    user.password = et_password.getText().toString();
                     db.UserDAO().insertUser(user);
                     // Display a toast message
                     Toast.makeText(getApplicationContext(), "New User Registered Successfully!", Toast.LENGTH_SHORT).show();

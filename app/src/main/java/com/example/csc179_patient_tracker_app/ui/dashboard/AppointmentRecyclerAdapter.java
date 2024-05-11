@@ -41,25 +41,32 @@ public class AppointmentRecyclerAdapter extends RecyclerView.Adapter<Appointment
 
     @Override
     public void onBindViewHolder(@NonNull AppointmentRecyclerHolder holder, int position) {
-
         AppointmentModel appointment = appointments.get(position);
-
         PatientModel patient = appointment.getPatient();
-        String patientName = String.format("%s, %s %s", patient.getLastName(), patient.getFirstName(), patient.getMiddleName());
-        String reason = appointment.getReason();
-        String date = appointment.getDate();
 
-        String appointmentText = String.format("Patient: %s Reason: %s Date: %s", patientName, reason, date);
+        if (patient != null) {
+            String lastName = patient.getLastName();
+            String firstName = patient.getFirstName();
+            String middleName = patient.getMiddleName();
+            String patientName = String.format("%s, %s %s", lastName, firstName, middleName);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickConsumer.accept(appointment);
-            }
+            String reason = appointment.getReason();
+            String date = appointment.getDate();
+            String appointmentText = String.format("Patient: %s\nReason: %s\nDate: %s", patientName, reason, date);
 
-        });
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickConsumer.accept(appointment);
+                }
+            });
 
-        holder.appointmentText.setText(appointmentText);
+            holder.appointmentText.setText(appointmentText);
+        } else {
+            // Handle null patient
+            holder.appointmentText.setText("Patient information not available");
+            holder.itemView.setOnClickListener(null); // Disable click listener or handle accordingly
+        }
     }
 
     @Override

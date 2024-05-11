@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.csc179_patient_tracker_app.AppointmentDetailsActivity;
+import com.example.csc179_patient_tracker_app.CreatePatientActivity;
 import com.example.csc179_patient_tracker_app.NewPatientInfoActivity;
 import com.example.csc179_patient_tracker_app.R;
 import com.example.csc179_patient_tracker_app.databinding.FragmentCreateAnAppointmentBinding;
@@ -37,7 +38,7 @@ public class NewAppointmentFragment extends Fragment {
         newPatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NewAppointmentFragment.this.getContext(), NewPatientInfoActivity.class);
+                Intent intent = new Intent(NewAppointmentFragment.this.getContext(), CreatePatientActivity.class);
                 startActivity(intent);
             }
         });

@@ -107,7 +107,7 @@
             android:text="Medical ID" />
 
         <EditText
-            android:id="@+id/editTextText4"
+            android:id="@+id/et_reason"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -131,7 +131,7 @@
             android:text="Time " />
 
         <Button
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

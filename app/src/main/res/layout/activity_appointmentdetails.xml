@@ -99,15 +99,7 @@
             android:inputType="phone" />
 
         <EditText
-            android:id="@+id/editTextText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Medical ID"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/editTextText4"
+            android:id="@+id/et_reason"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -115,7 +107,7 @@
             android:inputType="text" />
 
         <EditText
-            android:id="@+id/date_edittext"
+            android:id="@+id/et_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="false"
@@ -124,10 +116,10 @@
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:hint="Date"
-            android:inputType="text" />
+            android:inputType="date" />
 
         <EditText
-            android:id="@+id/time_edittext"
+            android:id="@+id/et_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="false"
@@ -139,17 +131,17 @@
             android:inputType="text" />
 
         <Button
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Sumbit " />
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

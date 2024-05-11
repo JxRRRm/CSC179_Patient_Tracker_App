@@ -22,7 +22,6 @@ public class DashboardFragment extends Fragment {
     private FragmentDashboardBinding binding;
     private NavController navController;
 
-    private Button createPatientButton;
     private RecyclerView appointmentRecycler;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -35,15 +34,9 @@ public class DashboardFragment extends Fragment {
 
         navController = NavHostFragment.findNavController(this);
 
-        createPatientButton = root.findViewById(R.id.button_create_patient);
+
         appointmentRecycler = root.findViewById(R.id.appointment_recycler);
 
-        createPatientButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_navigation_dashboard_to_create_patient);
-            }
-        });
 
         appointmentRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         appointmentRecycler.setAdapter(new AppointmentRecyclerAdapter(dashboardViewModel.getAppointments(), (appt) -> {

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DatabaseToolSources">
+    <data-source name="copy url" uuid="1de7b31a-129b-4e5e-82eb-49b649ee88de" type="SQLITE">
+      <base-info connect-type="DB_DEFAULT" product="SQLite" version="3.45.1" jdbc-name="SQLite JDBC" jdbc-version="3.45.1.0" />
+      <user-name />
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema">
+            <name qname="main" operator="@" use="false" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+      <url>jdbc:sqlite:C:/data/data/com.example.csc179_patient_tracker_app/databases/MyAppDB</url>
+      <remarks />
+      <vm-options />
+      <driver-info id="sqlite.xerial" />
+      <ssh-properties enabled="false" />
+      <jdbc-additional-properties>
+        <property name="enable_load_extension" value="true" />
+      </jdbc-additional-properties>
+      <ssl-config enabled="false">
+        <uuid />
+        <caFile />
+        <clientCertificateFile />
+        <clientKeyFile />
+        <sslMode>REQUIRE</sslMode>
+      </ssl-config>
+    </data-source>
+    <data-source name="localhost" uuid="ddc212d1-6f9d-4d81-9b3a-2ee5e60cd4e5" type="SQLITE">
+      <base-info connect-type="DB_DEFAULT" product="SQLite" version="3.45.1" jdbc-name="SQLite JDBC" jdbc-version="3.45.1.0" />
+      <user-name />
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema">
+            <name qname="main" operator="@" use="false" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+      <url>jdbc:sqlite:C:/data/data/com.example.csc179_patient_tracker_app/databases/PT_database</url>
+      <remarks />
+      <vm-options />
+      <driver-info id="sqlite.xerial" />
+      <ssh-properties enabled="false" />
+      <jdbc-additional-properties>
+        <property name="enable_load_extension" value="true" />
+      </jdbc-additional-properties>
+      <ssl-config enabled="false">
+        <uuid />
+        <caFile />
+        <clientCertificateFile />
+        <clientKeyFile />
+        <sslMode>REQUIRE</sslMode>
+      </ssl-config>
+    </data-source>
+  </component>
+</project>
