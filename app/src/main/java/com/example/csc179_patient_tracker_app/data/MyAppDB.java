@@ -40,11 +40,10 @@ public abstract class MyAppDB extends RoomDatabase {
                         for (int i = 0; i < 10; i++) {
                             // Create and insert user
                             UserModel user = new UserModel();
-                                user.profession = "Doctor" + i;
                                 user.firstName = "fName" + i;
                                 user.middleName = "middleName" + i;
                                 user.lastName = "lastName" + i;
-                                user.username = "username" + i;
+                                user.username = "user" + i;
                                 user.password = "password" + i;
                                 user.email = "user" + i + "@email.com";
                             INSTANCE.UserDAO().insertUser(user);
@@ -62,7 +61,7 @@ public abstract class MyAppDB extends RoomDatabase {
                             // Create and insert appointment
                             AppointmentModel appointment = new AppointmentModel(
                                     i + 1, // Set patientId for the appointment
-                                    "2024/06/" + (i + 10),
+                                    "2024/05/11",
                                     "1" + i +":00",
                                     "Appointment for reason " + i
                             );
