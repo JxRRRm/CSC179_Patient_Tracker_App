@@ -123,4 +123,6 @@ public class AppointmentModel implements Comparable<AppointmentModel>, Parcelabl
         dest.writeString(reason);
         dest.writeString(date);
     }
+
+
 }
