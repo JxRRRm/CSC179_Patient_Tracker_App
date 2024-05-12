@@ -8,6 +8,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.Relation;
 
 
 @Entity(tableName = "Appointments")
@@ -22,10 +23,6 @@ public class AppointmentModel implements Comparable<AppointmentModel>, Parcelabl
     public String appointmentTime;
     @ColumnInfo(name = "reason")
     public String reason;
-    @Ignore
-    public PatientModel patient;
-    // Constructor, getters, and setters can also be added if needed
-
 
     public AppointmentModel() {
     }
@@ -37,7 +34,6 @@ public class AppointmentModel implements Comparable<AppointmentModel>, Parcelabl
     }
 
     protected AppointmentModel(Parcel in) {
-        patient = in.readParcelable(PatientModel.class.getClassLoader());
         reason = in.readString();
         date = in.readString();
     }
@@ -54,8 +50,8 @@ public class AppointmentModel implements Comparable<AppointmentModel>, Parcelabl
         }
     };
 
-    public PatientModel getPatient() {
-        return patient;
+    public PatientModel getPatient(MyAppDB db) {
+        return db.PatientDAO().getPatient(patientId);
     }
 
 
@@ -73,9 +69,6 @@ public class AppointmentModel implements Comparable<AppointmentModel>, Parcelabl
 
     public void setPatientId(int patientId) {
         this.patientId = patientId;
-    }
-    public void setPatient(PatientModel patient) {
-        this.patient = patient;
     }
 
     public String getDate() {
@@ -127,7 +120,6 @@ public class AppointmentModel implements Comparable<AppointmentModel>, Parcelabl
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeParcelable(patient, flags);
         dest.writeString(reason);
         dest.writeString(date);
     }

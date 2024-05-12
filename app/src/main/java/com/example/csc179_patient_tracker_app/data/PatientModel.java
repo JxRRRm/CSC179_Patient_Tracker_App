@@ -14,13 +14,15 @@ import java.util.Date;
 public class PatientModel implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     public int id; // Adjust data type if necessary
+    @ColumnInfo(name = "medical_id")
+    public int medicalId;
     @ColumnInfo(name = "first_name")
     public String firstName;
     @ColumnInfo(name = "middle_name")
     public String middleName;
     @ColumnInfo(name = "last_name")
     public String lastName;
-    @ColumnInfo(name = "dob_YYYY/MM/DD")
+    @ColumnInfo(name = "dob")
     public String dob;
     @ColumnInfo(name = "home_number")
     public String homePhone;
@@ -45,13 +47,12 @@ public class PatientModel implements Parcelable {
     public PatientModel() {
     }
 
-    public PatientModel(String firstName, String middleName, String lastName, String dob, String mobilePhone, String email) {
+    public PatientModel(String firstName, String middleName, String lastName, String dob, String homePhone) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
         this.dob = dob;
-        this.mobilePhone = mobilePhone;
-        this.email = email;
+        this.homePhone = homePhone;
     }
 
     public PatientModel(int id, String firstName, String middleName, String lastName, String dob, String homePhone, String mobilePhone, String email, char gender, String maritalStatus, String ethnicity, String language, String bloodGroup, String rhFactor) {
@@ -73,12 +74,44 @@ public class PatientModel implements Parcelable {
 
     protected PatientModel(Parcel in) {
         id = in.readInt();
+        medicalId = in.readInt();
         firstName = in.readString();
         middleName = in.readString();
         lastName = in.readString();
         dob = in.readString();
+        homePhone = in.readString();
         mobilePhone = in.readString();
         email = in.readString();
+        gender = (char) in.readInt();
+        maritalStatus = in.readString();
+        ethnicity = in.readString();
+        language = in.readString();
+        bloodGroup = in.readString();
+        rhFactor = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(medicalId);
+        dest.writeString(firstName);
+        dest.writeString(middleName);
+        dest.writeString(lastName);
+        dest.writeString(dob);
+        dest.writeString(homePhone);
+        dest.writeString(mobilePhone);
+        dest.writeString(email);
+        dest.writeInt((int) gender);
+        dest.writeString(maritalStatus);
+        dest.writeString(ethnicity);
+        dest.writeString(language);
+        dest.writeString(bloodGroup);
+        dest.writeString(rhFactor);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<PatientModel> CREATOR = new Creator<PatientModel>() {
@@ -92,7 +125,6 @@ public class PatientModel implements Parcelable {
             return new PatientModel[size];
         }
     };
-
 
     public int getId() {
         return id;
@@ -206,20 +238,12 @@ public class PatientModel implements Parcelable {
         this.rhFactor = rhFactor;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public int getMedicalId() {
+        return medicalId;
     }
 
-    @Override
-    public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(firstName);
-        dest.writeString(middleName);
-        dest.writeString(lastName);
-        dest.writeString(dob);
-        dest.writeString(mobilePhone);
-        dest.writeString(email);
+    public void setMedicalId(int medicalId) {
+        this.medicalId = medicalId;
     }
-    
 }
+

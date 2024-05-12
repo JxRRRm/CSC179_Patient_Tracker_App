@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface AppointmentDAO {
     @Query("SELECT * FROM Appointments")
-    LiveData<List<AppointmentModel>> getAllAppointments();
+    List<AppointmentModel> getAllAppointments();
     @Query("SELECT COUNT(*) FROM Appointments")
     int getAppointmentCount();
 

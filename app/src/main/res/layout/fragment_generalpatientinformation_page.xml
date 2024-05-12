@@ -73,16 +73,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Full Name (first,last, middle)" />
+            android:text="Full Name (first, middle, last)" />
 
-        <EditText
-            android:id="@+id/full_name_field"
-            android:layout_width="361dp"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:inputType="text" />
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/first_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/middle_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/last_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="text" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -149,22 +173,16 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="197dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Blood Group" />
 
             <TextView
-                android:layout_width="278dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="RH Factor" />
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Age" />
+                android:text="RH Factor" />
 
         </LinearLayout>
 
@@ -192,74 +210,6 @@
                 android:ems="10"
                 android:inputType="text" />
 
-            <EditText
-                android:id="@+id/age_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="text" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="295dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Address" />
-
-            <TextView
-                android:layout_width="66dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="State" />
-
-            <TextView
-                android:layout_width="2dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Zip Code" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/address_field"
-                android:layout_width="327dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="text" />
-
-            <EditText
-                android:id="@+id/state_field"
-                android:layout_width="158dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="text" />
-
-            <EditText
-                android:id="@+id/zip_code_field"
-                android:layout_width="102dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="text" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -280,11 +230,6 @@
                 android:layout_weight="1"
                 android:text="Moblie Number " />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="SMS" />
         </LinearLayout>
 
         <LinearLayout
@@ -311,14 +256,6 @@
                 android:ems="10"
                 android:inputType="text" />
 
-            <EditText
-                android:id="@+id/sms_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="text" />
-
         </LinearLayout>
 
         <TextView
@@ -332,7 +269,7 @@
             android:layout_width="316dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="datetime|date" />
+            android:inputType="textEmailAddress" />
 
         <LinearLayout
             android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 package com.example.csc179_patient_tracker_app.ui.dashboard;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.csc179_patient_tracker_app.R;
 import com.example.csc179_patient_tracker_app.data.AppointmentModel;
+import com.example.csc179_patient_tracker_app.data.MyAppDB;
 import com.example.csc179_patient_tracker_app.data.PatientModel;
 
 import java.time.LocalDate;
@@ -22,13 +24,15 @@ public class AppointmentRecyclerAdapter extends RecyclerView.Adapter<Appointment
 
     private List<AppointmentModel> appointments;
     private Consumer<AppointmentModel> onClickConsumer;
+    private MyAppDB db;
 
-    public AppointmentRecyclerAdapter(List<AppointmentModel> appointments, Consumer<AppointmentModel> onClickConsumer) {
+    public AppointmentRecyclerAdapter(List<AppointmentModel> appointments, Consumer<AppointmentModel> onClickConsumer, Context context) {
         this.appointments = appointments;
         this.onClickConsumer = onClickConsumer;
 
         Collections.sort(appointments);
         notifyDataSetChanged();
+        db = MyAppDB.getDbInstance(context);
     }
 
     @NonNull
@@ -42,7 +46,7 @@ public class AppointmentRecyclerAdapter extends RecyclerView.Adapter<Appointment
     @Override
     public void onBindViewHolder(@NonNull AppointmentRecyclerHolder holder, int position) {
         AppointmentModel appointment = appointments.get(position);
-        PatientModel patient = appointment.getPatient();
+        PatientModel patient = appointment.getPatient(db);
 
         if (patient != null) {
             String lastName = patient.getLastName();

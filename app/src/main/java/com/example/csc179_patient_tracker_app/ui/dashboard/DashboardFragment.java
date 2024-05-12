@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.csc179_patient_tracker_app.R;
+import com.example.csc179_patient_tracker_app.data.MyAppDB;
 import com.example.csc179_patient_tracker_app.databinding.FragmentDashboardBinding;
 
 public class DashboardFragment extends Fragment {
@@ -23,6 +24,7 @@ public class DashboardFragment extends Fragment {
     private NavController navController;
 
     private RecyclerView appointmentRecycler;
+    private MyAppDB db;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -33,16 +35,16 @@ public class DashboardFragment extends Fragment {
         View root = binding.getRoot();
 
         navController = NavHostFragment.findNavController(this);
+        db = MyAppDB.getDbInstance(getContext());
 
 
         appointmentRecycler = root.findViewById(R.id.appointment_recycler);
 
-
         appointmentRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        appointmentRecycler.setAdapter(new AppointmentRecyclerAdapter(dashboardViewModel.getAppointments(), (appt) -> {
+        appointmentRecycler.setAdapter(new AppointmentRecyclerAdapter(db.AppointmentDAO().getAllAppointments(), (appt) -> {
             DashboardFragmentDirections.ActionNavigationDashboardToNavigationMenu action = DashboardFragmentDirections.actionNavigationDashboardToNavigationMenu(appt);
             navController.navigate(action);
-        }));
+        }, getContext()));
 
         return root;
     }

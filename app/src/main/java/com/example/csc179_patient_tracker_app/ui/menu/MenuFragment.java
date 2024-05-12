@@ -17,6 +17,7 @@ import com.example.csc179_patient_tracker_app.LabReportsActivity;
 import com.example.csc179_patient_tracker_app.MedicationsActivity;
 import com.example.csc179_patient_tracker_app.UpcomingAppointmentsActivity;
 import com.example.csc179_patient_tracker_app.data.AppointmentModel;
+import com.example.csc179_patient_tracker_app.data.MyAppDB;
 import com.example.csc179_patient_tracker_app.data.PatientModel;
 import com.example.csc179_patient_tracker_app.databinding.FragmentMenuBinding;
 
@@ -29,8 +30,27 @@ public class MenuFragment extends Fragment {
     private FragmentMenuBinding binding;
     private TextView ageText;
     private TextView nameText;
+    private TextView genderText;
     private AppointmentModel appointment;
     private PatientModel patient;
+    private MyAppDB db;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        appointment = getArguments().getParcelable("appointment");
+        if (appointment != null) {
+            patient = appointment.getPatient(db);
+
+            DateTimeFormatter parser = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            LocalDate dob = LocalDate.parse(patient.getDob(), parser);
+            long age = ChronoUnit.YEARS.between(dob, LocalDate.now());
+
+            ageText.setText(String.format("Age: %d", age));
+            nameText.setText(String.format("%s %s %s", patient.getFirstName(), patient.getMiddleName(), patient.getLastName()));
+            genderText.setText(String.valueOf(patient.getGender()));
+        }
+    }
 
     @NonNull
     @Override
@@ -39,14 +59,17 @@ public class MenuFragment extends Fragment {
         binding = FragmentMenuBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        db = MyAppDB.getDbInstance(getContext());
+
         // Assign TextViews using View Binding
         ageText = binding.ageText;
         nameText = binding.nameText;
+        genderText = binding.genderText;
 
         // Retrieve appointment from arguments
         appointment = getArguments().getParcelable("appointment");
         if (appointment != null) {
-            patient = appointment.getPatient();
+            patient = appointment.getPatient(db);
 
             DateTimeFormatter parser = DateTimeFormatter.ofPattern("MM/dd/yyyy");
             LocalDate dob = LocalDate.parse(patient.getDob(), parser);
@@ -54,11 +77,13 @@ public class MenuFragment extends Fragment {
 
             ageText.setText(String.format("Age: %d", age));
             nameText.setText(String.format("%s %s %s", patient.getFirstName(), patient.getMiddleName(), patient.getLastName()));
+            genderText.setText(String.valueOf(patient.getGender()));
         }
 
         // Set click listener for the "General Patient Information" button
         binding.buttonGeneralPatientInfo.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), GeneralPatientInformationActivity.class);
+            intent.putExtra("patient_model", patient);
             startActivity(intent);
         });
 

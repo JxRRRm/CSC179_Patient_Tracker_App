@@ -23,11 +23,12 @@ public interface PatientDAO {
     @Query("SELECT COUNT(*) FROM Patients")
     int getPatientCount();
     @Query("SELECT * FROM Patients")
-    LiveData<List<PatientModel>> getAllPatients();
+    List<PatientModel> getAllPatients();
     @Query("select * from Patients where id == :id ")
     public PatientModel getPatient(int id);
-    @Query("SELECT id FROM Patients WHERE first_name = :firstName AND middle_name = :middleName AND last_name = :lastName AND `dob_YYYY/MM/DD` = :dob AND mobile_phone = :phoneNumber")
+    @Query("SELECT id FROM Patients WHERE first_name = :firstName AND middle_name = :middleName AND last_name = :lastName AND dob = :dob AND home_number = :phoneNumber")
     int getPatientIdByDetails(String firstName, String middleName, String lastName, String dob, String phoneNumber);
 
-
+    @Query("SELECT * FROM Patients WHERE first_name LIKE '%' || :firstName || '%' AND middle_name LIKE '%' || :middleName || '%' AND last_name LIKE '%' || :lastName || '%'")
+    List<PatientModel> searchPatients(String firstName, String middleName, String lastName);
 }

@@ -6,15 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.csc179_patient_tracker_app.AppointmentDetailsActivity;
+import com.example.csc179_patient_tracker_app.appointmentdetails.AppointmentDetailsActivity;
 import com.example.csc179_patient_tracker_app.CreatePatientActivity;
-import com.example.csc179_patient_tracker_app.NewPatientInfoActivity;
 import com.example.csc179_patient_tracker_app.R;
 import com.example.csc179_patient_tracker_app.databinding.FragmentCreateAnAppointmentBinding;
 

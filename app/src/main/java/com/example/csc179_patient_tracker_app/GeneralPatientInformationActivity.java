@@ -11,26 +11,34 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.csc179_patient_tracker_app.data.MyAppDB;
+import com.example.csc179_patient_tracker_app.data.PatientModel;
+import com.example.csc179_patient_tracker_app.util.EditTextReadOnlyUtil;
+
 public class GeneralPatientInformationActivity extends AppCompatActivity {
     private boolean editMode = false;
 
     private EditText patientId;
-    private EditText fullName;
+    private EditText firstName;
+    private EditText middleName;
+    private EditText lastName;
+
     private EditText dob;
     private EditText gender;
     private EditText maritalStatus;
     private EditText bloodGroup;
     private EditText rhFactor;
-    private EditText age;
     private EditText phoneNumber;
     private EditText mobileNumber;
-    private EditText sms;
     private EditText emailAddress;
     private EditText emergencyFullName;
     private EditText emergencyRelation;
     private EditText emergencyPhoneNumber;
-
     private Button saveEditButton;
+
+    private PatientModel patientModel;
+
+    private MyAppDB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,22 +51,42 @@ public class GeneralPatientInformationActivity extends AppCompatActivity {
             return insets;
         });
 
+        db = MyAppDB.getDbInstance(this);
+
         patientId = findViewById(R.id.patient_id_field);
-        fullName = findViewById(R.id.full_name_field);
+        firstName = findViewById(R.id.first_name);
+        middleName = findViewById(R.id.middle_name);
+        lastName = findViewById(R.id.last_name);
         dob = findViewById(R.id.dob_field);
         gender = findViewById(R.id.gender_field);
         maritalStatus = findViewById(R.id.marital_status_field);
         bloodGroup = findViewById(R.id.blood_group_field);
         rhFactor = findViewById(R.id.rh_factor_field);
-        age = findViewById(R.id.age_field);
         phoneNumber = findViewById(R.id.phone_number_field);
         mobileNumber = findViewById(R.id.mobile_number_field);
-        sms = findViewById(R.id.sms_field);
         emailAddress = findViewById(R.id.email_address_field);
         emergencyFullName = findViewById(R.id.emergency_full_name_field);
         emergencyRelation = findViewById(R.id.emergency_relation_field);
         emergencyPhoneNumber = findViewById(R.id.emergency_phone_number_field);
         saveEditButton = findViewById(R.id.save_edit_button);
+
+        this.patientModel = getIntent().getParcelableExtra("patient_model");
+
+        // Populate EditText fields with patient data
+        if (patientModel != null) {
+            patientId.setText(String.valueOf(patientModel.getMedicalId()));
+            firstName.setText(patientModel.getFirstName());
+            middleName.setText(patientModel.getMiddleName());
+            lastName.setText(patientModel.getLastName());
+            dob.setText(patientModel.getDob());
+            gender.setText(String.valueOf(patientModel.getGender())); // Adjust based on actual gender representation
+            maritalStatus.setText(patientModel.getMaritalStatus());
+            bloodGroup.setText(patientModel.getBloodGroup());
+            rhFactor.setText(patientModel.getRhFactor());
+            phoneNumber.setText(patientModel.getHomePhone());
+            mobileNumber.setText(patientModel.getMobilePhone());
+            emailAddress.setText(patientModel.getEmail());
+        }
 
         readMode();
 
@@ -67,7 +95,7 @@ public class GeneralPatientInformationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(editMode) {
                     readMode();
-                    // save to database
+                    saveToDatabase();
                 } else {
                     editMode();
                 }
@@ -75,103 +103,60 @@ public class GeneralPatientInformationActivity extends AppCompatActivity {
         });
     }
 
+    private void saveToDatabase() {
+        patientModel.setMedicalId(Integer.parseInt(patientId.getText().toString().trim()));
+        patientModel.setFirstName(firstName.getText().toString().trim());
+        patientModel.setMiddleName(middleName.getText().toString().trim());
+        patientModel.setLastName(lastName.getText().toString().trim());
+        patientModel.setDob(dob.getText().toString().trim());
+        patientModel.setGender(!gender.getText().toString().trim().isEmpty() ? gender.getText().toString().trim().toUpperCase().charAt(0) : 0);
+        patientModel.setMaritalStatus(maritalStatus.getText().toString().trim());
+        patientModel.setBloodGroup(bloodGroup.getText().toString().trim());
+        patientModel.setRhFactor(rhFactor.getText().toString().trim());
+        patientModel.setHomePhone(phoneNumber.getText().toString());
+        patientModel.setMobilePhone(mobileNumber.getText().toString());
+        patientModel.setEmail(emailAddress.getText().toString());
+
+        db.PatientDAO().updatePatient(patientModel);
+    }
+
     private void readMode() {
         saveEditButton.setText("Edit");
         editMode = false;
-        patientId.setFocusable(false);
-        fullName.setFocusable(false);
-        dob.setFocusable(false);
-        gender.setFocusable(false);
-        maritalStatus.setFocusable(false);
-        bloodGroup.setFocusable(false);
-        rhFactor.setFocusable(false);
-        age.setFocusable(false);
-        phoneNumber.setFocusable(false);
-        mobileNumber.setFocusable(false);
-        sms.setFocusable(false);
-        emailAddress.setFocusable(false);
-        emergencyFullName.setFocusable(false);
-        emergencyRelation.setFocusable(false);
-        emergencyPhoneNumber.setFocusable(false);
-        patientId.setFocusableInTouchMode(false);
-        fullName.setFocusableInTouchMode(false);
-        dob.setFocusableInTouchMode(false);
-        gender.setFocusableInTouchMode(false);
-        maritalStatus.setFocusableInTouchMode(false);
-        bloodGroup.setFocusableInTouchMode(false);
-        rhFactor.setFocusableInTouchMode(false);
-        age.setFocusableInTouchMode(false);
-        phoneNumber.setFocusableInTouchMode(false);
-        mobileNumber.setFocusableInTouchMode(false);
-        sms.setFocusableInTouchMode(false);
-        emailAddress.setFocusableInTouchMode(false);
-        emergencyFullName.setFocusableInTouchMode(false);
-        emergencyRelation.setFocusableInTouchMode(false);
-        emergencyPhoneNumber.setFocusableInTouchMode(false);
-        patientId.setClickable(false);
-        fullName.setClickable(false);
-        dob.setClickable(false);
-        gender.setClickable(false);
-        maritalStatus.setClickable(false);
-        bloodGroup.setClickable(false);
-        rhFactor.setClickable(false);
-        age.setClickable(false);
-        phoneNumber.setClickable(false);
-        mobileNumber.setClickable(false);
-        sms.setClickable(false);
-        emailAddress.setClickable(false);
-        emergencyFullName.setClickable(false);
-        emergencyRelation.setClickable(false);
-        emergencyPhoneNumber.setClickable(false);
+        EditTextReadOnlyUtil.readOnly(patientId);
+        EditTextReadOnlyUtil.readOnly(firstName);
+        EditTextReadOnlyUtil.readOnly(middleName);
+        EditTextReadOnlyUtil.readOnly(lastName);
+        EditTextReadOnlyUtil.readOnly(dob);
+        EditTextReadOnlyUtil.readOnly(gender);
+        EditTextReadOnlyUtil.readOnly(maritalStatus);
+        EditTextReadOnlyUtil.readOnly(bloodGroup);
+        EditTextReadOnlyUtil.readOnly(rhFactor);
+        EditTextReadOnlyUtil.readOnly(phoneNumber);
+        EditTextReadOnlyUtil.readOnly(mobileNumber);
+        EditTextReadOnlyUtil.readOnly(emailAddress);
+        EditTextReadOnlyUtil.readOnly(emergencyFullName);
+        EditTextReadOnlyUtil.readOnly(emergencyRelation);
+        EditTextReadOnlyUtil.readOnly(emergencyPhoneNumber);
     }
 
     private void editMode() {
         saveEditButton.setText("Save");
         editMode = true;
-        patientId.setFocusable(true);
-        fullName.setFocusable(true);
-        dob.setFocusable(true);
-        gender.setFocusable(true);
-        maritalStatus.setFocusable(true);
-        bloodGroup.setFocusable(true);
-        rhFactor.setFocusable(true);
-        age.setFocusable(true);
-        phoneNumber.setFocusable(true);
-        mobileNumber.setFocusable(true);
-        sms.setFocusable(true);
-        emailAddress.setFocusable(true);
-        emergencyFullName.setFocusable(true);
-        emergencyRelation.setFocusable(true);
-        emergencyPhoneNumber.setFocusable(true);
-        patientId.setFocusableInTouchMode(true);
-        fullName.setFocusableInTouchMode(true);
-        dob.setFocusableInTouchMode(true);
-        gender.setFocusableInTouchMode(true);
-        maritalStatus.setFocusableInTouchMode(true);
-        bloodGroup.setFocusableInTouchMode(true);
-        rhFactor.setFocusableInTouchMode(true);
-        age.setFocusableInTouchMode(true);
-        phoneNumber.setFocusableInTouchMode(true);
-        mobileNumber.setFocusableInTouchMode(true);
-        sms.setFocusableInTouchMode(true);
-        emailAddress.setFocusableInTouchMode(true);
-        emergencyFullName.setFocusableInTouchMode(true);
-        emergencyRelation.setFocusableInTouchMode(true);
-        emergencyPhoneNumber.setFocusableInTouchMode(true);
-        patientId.setClickable(true);
-        fullName.setClickable(true);
-        dob.setClickable(true);
-        gender.setClickable(true);
-        maritalStatus.setClickable(true);
-        bloodGroup.setClickable(true);
-        rhFactor.setClickable(true);
-        age.setClickable(true);
-        phoneNumber.setClickable(true);
-        mobileNumber.setClickable(true);
-        sms.setClickable(true);
-        emailAddress.setClickable(true);
-        emergencyFullName.setClickable(true);
-        emergencyRelation.setClickable(true);
-        emergencyPhoneNumber.setClickable(true);
+        EditTextReadOnlyUtil.editable(patientId);
+        EditTextReadOnlyUtil.editable(firstName);
+        EditTextReadOnlyUtil.editable(middleName);
+        EditTextReadOnlyUtil.editable(lastName);
+        EditTextReadOnlyUtil.editable(dob);
+        EditTextReadOnlyUtil.editable(gender);
+        EditTextReadOnlyUtil.editable(maritalStatus);
+        EditTextReadOnlyUtil.editable(bloodGroup);
+        EditTextReadOnlyUtil.editable(rhFactor);
+        EditTextReadOnlyUtil.editable(phoneNumber);
+        EditTextReadOnlyUtil.editable(mobileNumber);
+        EditTextReadOnlyUtil.editable(emailAddress);
+        EditTextReadOnlyUtil.editable(emergencyFullName);
+        EditTextReadOnlyUtil.editable(emergencyRelation);
+        EditTextReadOnlyUtil.editable(emergencyPhoneNumber);
     }
 }
