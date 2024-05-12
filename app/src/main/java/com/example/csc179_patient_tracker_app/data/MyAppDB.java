@@ -53,7 +53,7 @@ public abstract class MyAppDB extends RoomDatabase {
                                 patient.firstName = "firstName" + i;
                                 patient.middleName = "middleName" + i;
                                 patient.lastName = "lastName" + i;
-                                patient.dob = "199" + i +"/01/1" + i;
+                                patient.dob = "01/1" + i + "/199" + i;
                                 patient.mobilePhone = "(000)-000-000" + i;
                                 patient.email = i + "test@email.com";
                             INSTANCE.PatientDAO().insertPatient(patient);

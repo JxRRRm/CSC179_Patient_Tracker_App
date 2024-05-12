@@ -20,14 +20,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Consumer;
 
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.ViewHolder> {
     private List<AppointmentModel> appointments;
     private MyAppDB db;
+    private Consumer<AppointmentModel> onClickConsumer;
 
-    public AppointmentAdapter(List<AppointmentModel> appointments, MyAppDB db) {
-        this.appointments = filterAppointmentsForToday(appointments);
+    public AppointmentAdapter(List<AppointmentModel> appointments, MyAppDB db, Consumer<AppointmentModel> onClickConsumer) {
+        this.appointments = appointments;
         this.db = db;
+        this.onClickConsumer = onClickConsumer;
     }
 
     @NonNull
@@ -48,8 +51,12 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         holder.tv_date.setText(appointment.getDate());
         holder.tv_time.setText(appointment.getAppointmentTime());
         holder.tv_reason.setText(appointment.getReason());
-
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickConsumer.accept(appointment);
+            }
+        });
     }
 
     @Override
