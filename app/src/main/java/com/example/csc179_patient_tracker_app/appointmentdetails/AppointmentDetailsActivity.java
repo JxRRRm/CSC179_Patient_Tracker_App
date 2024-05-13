@@ -87,7 +87,7 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
             et_lastName.setText(patientModel.lastName);
             et_middleName.setText(patientModel.middleName);
             et_dob.setText(patientModel.dob);
-            et_phonenumber.setText(patientModel.homePhone);
+            et_phonenumber.setText(patientModel.mobilePhone);
         }));
         patientsRecycler.setLayoutManager(new LinearLayoutManager(this));
         patientsRecycler.setAdapter(patientSearchRecyclerAdapter);
@@ -154,8 +154,7 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
                             et_firstName.getText().toString(),
                             et_middleName.getText().toString(),
                             et_lastName.getText().toString(),
-                            et_dob.getText().toString(),
-                            et_phonenumber.getText().toString()
+                            et_dob.getText().toString()
                     );
 
                     if(patientId == 0) {
@@ -190,7 +189,11 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
     }
 
     private void runSearch() {
-        patientSearchRecyclerAdapter.search(et_firstName.getText().toString(), et_middleName.getText().toString(), et_lastName.getText().toString(), et_dob.getText().toString(), et_phonenumber.getText().toString());
+        if(!et_firstName.getText().toString().isEmpty() || !et_middleName.getText().toString().isEmpty() || !et_lastName.getText().toString().isEmpty()) {
+            patientSearchRecyclerAdapter.search(et_firstName.getText().toString(), et_middleName.getText().toString(), et_lastName.getText().toString());
+        } else {
+            patientSearchRecyclerAdapter.resetSearch();
+        }
     }
 
     private void showDatePickerDialog(EditText et) {

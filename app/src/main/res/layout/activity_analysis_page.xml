@@ -39,6 +39,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
@@ -121,5 +122,14 @@
             android:text="Edit " />
 
     </LinearLayout>
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/primary_blue"
+        app:layout_constraintBottom_toTopOf="@+id/back"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

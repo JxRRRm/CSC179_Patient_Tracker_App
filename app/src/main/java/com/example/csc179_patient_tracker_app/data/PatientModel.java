@@ -42,6 +42,26 @@ public class PatientModel implements Parcelable {
     public String bloodGroup;
     @ColumnInfo(name = "rh_factor")
     public String rhFactor;
+    @ColumnInfo(name = "emergency_full_name")
+    public String emergencyFullName;
+    @ColumnInfo(name = "emergency_relation")
+    public String emergencyRelation;
+    @ColumnInfo(name = "emergency_phone_number")
+    public String emergencyPhoneNumber;
+    @ColumnInfo(name = "current_illnesses")
+    public String currentIllnesses;
+    @ColumnInfo(name = "previous_illnesses")
+    public String previousIllnesses;
+    @ColumnInfo(name = "specific_allergies")
+    public String specificAllergies;
+    @ColumnInfo(name = "current_medications")
+    public String currentMedications;
+    @ColumnInfo(name = "past_medications")
+    public String pastMedications;
+    @ColumnInfo(name = "doctor_visits")
+    public String doctorVisits;
+    @ColumnInfo(name = "vaccinations")
+    public String vaccinations;
 
     // Constructor, getters, and setters can also be added if needed
     public PatientModel() {
@@ -88,6 +108,16 @@ public class PatientModel implements Parcelable {
         language = in.readString();
         bloodGroup = in.readString();
         rhFactor = in.readString();
+        emergencyFullName = in.readString();
+        emergencyRelation = in.readString();
+        emergencyPhoneNumber = in.readString();
+        currentIllnesses = in.readString();
+        previousIllnesses = in.readString();
+        specificAllergies = in.readString();
+        currentMedications = in.readString();
+        pastMedications = in.readString();
+        doctorVisits = in.readString();
+        vaccinations = in.readString();
     }
 
     @Override
@@ -107,6 +137,16 @@ public class PatientModel implements Parcelable {
         dest.writeString(language);
         dest.writeString(bloodGroup);
         dest.writeString(rhFactor);
+        dest.writeString(emergencyFullName);
+        dest.writeString(emergencyRelation);
+        dest.writeString(emergencyPhoneNumber);
+        dest.writeString(currentIllnesses);
+        dest.writeString(previousIllnesses);
+        dest.writeString(specificAllergies);
+        dest.writeString(currentMedications);
+        dest.writeString(pastMedications);
+        dest.writeString(doctorVisits);
+        dest.writeString(vaccinations);
     }
 
     @Override
@@ -244,6 +284,86 @@ public class PatientModel implements Parcelable {
 
     public void setMedicalId(int medicalId) {
         this.medicalId = medicalId;
+    }
+
+    public String getEmergencyFullName() {
+        return emergencyFullName;
+    }
+
+    public void setEmergencyFullName(String emergencyFullName) {
+        this.emergencyFullName = emergencyFullName;
+    }
+
+    public String getEmergencyRelation() {
+        return emergencyRelation;
+    }
+
+    public void setEmergencyRelation(String emergencyRelation) {
+        this.emergencyRelation = emergencyRelation;
+    }
+
+    public String getEmergencyPhoneNumber() {
+        return emergencyPhoneNumber;
+    }
+
+    public void setEmergencyPhoneNumber(String emergencyPhoneNumber) {
+        this.emergencyPhoneNumber = emergencyPhoneNumber;
+    }
+
+    public String getCurrentIllnesses() {
+        return currentIllnesses;
+    }
+
+    public void setCurrentIllnesses(String currentIllnesses) {
+        this.currentIllnesses = currentIllnesses;
+    }
+
+    public String getPreviousIllnesses() {
+        return previousIllnesses;
+    }
+
+    public void setPreviousIllnesses(String previousIllnesses) {
+        this.previousIllnesses = previousIllnesses;
+    }
+
+    public String getSpecificAllergies() {
+        return specificAllergies;
+    }
+
+    public void setSpecificAllergies(String specificAllergies) {
+        this.specificAllergies = specificAllergies;
+    }
+
+    public String getCurrentMedications() {
+        return currentMedications;
+    }
+
+    public void setCurrentMedications(String currentMedications) {
+        this.currentMedications = currentMedications;
+    }
+
+    public String getPastMedications() {
+        return pastMedications;
+    }
+
+    public void setPastMedications(String pastMedications) {
+        this.pastMedications = pastMedications;
+    }
+
+    public String getDoctorVisits() {
+        return doctorVisits;
+    }
+
+    public void setDoctorVisits(String doctorVisits) {
+        this.doctorVisits = doctorVisits;
+    }
+
+    public String getVaccinations() {
+        return vaccinations;
+    }
+
+    public void setVaccinations(String vaccinations) {
+        this.vaccinations = vaccinations;
     }
 }
 

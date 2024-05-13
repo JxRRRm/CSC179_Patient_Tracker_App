@@ -10,6 +10,7 @@
     tools:context=".ui.menu.MenuFragment">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -23,33 +24,23 @@
 
         <TextView
             android:id="@+id/age_text"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="Age"
-            android:textAlignment="center"
-            android:textColor="@color/primary_blue"
-            android:textSize="48sp" />
-
-        <TextView
-            android:id="@+id/name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Name"
-            android:textAlignment="center"
+            android:text="Age"
+            android:textAlignment="textStart"
             android:textColor="@color/primary_blue"
-            android:textSize="48sp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/gender_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
+            android:layout_weight="1"
             android:text="Gender?"
-            android:textAlignment="center"
+            android:textAlignment="textEnd"
             android:textColor="@color/primary_blue"
-            android:textSize="48sp" />
+            android:textSize="24sp" />
     </LinearLayout>
 
     <View
@@ -113,5 +104,19 @@
             android:text="Upcoming Appointments" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textColor="@color/primary_blue"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

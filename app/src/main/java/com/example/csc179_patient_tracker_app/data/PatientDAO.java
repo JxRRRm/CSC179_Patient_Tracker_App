@@ -26,9 +26,12 @@ public interface PatientDAO {
     List<PatientModel> getAllPatients();
     @Query("select * from Patients where id == :id ")
     public PatientModel getPatient(int id);
-    @Query("SELECT id FROM Patients WHERE first_name = :firstName AND middle_name = :middleName AND last_name = :lastName AND dob = :dob AND home_number = :phoneNumber")
-    int getPatientIdByDetails(String firstName, String middleName, String lastName, String dob, String phoneNumber);
+    @Query("SELECT id FROM Patients WHERE first_name = :firstName AND middle_name = :middleName AND last_name = :lastName AND dob = :dob")
+    int getPatientIdByDetails(String firstName, String middleName, String lastName, String dob);
 
     @Query("SELECT * FROM Patients WHERE first_name LIKE '%' || :firstName || '%' AND middle_name LIKE '%' || :middleName || '%' AND last_name LIKE '%' || :lastName || '%'")
     List<PatientModel> searchPatients(String firstName, String middleName, String lastName);
+
+    @Query("SELECT * FROM Patients WHERE first_name LIKE '%' || :firstName || '%' AND middle_name LIKE '%' || :middleName || '%' AND last_name LIKE '%' || :lastName || '%' AND dob LIKE '%' || :dob || '%' AND medical_id LIKE '%' || :medicalId || '%'")
+    List<PatientModel> searchPatients(String firstName, String middleName, String lastName, String dob, String medicalId);
 }

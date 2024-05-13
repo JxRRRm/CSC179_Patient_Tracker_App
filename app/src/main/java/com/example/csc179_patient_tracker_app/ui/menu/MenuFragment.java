@@ -38,11 +38,11 @@ public class MenuFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        appointment = getArguments().getParcelable("appointment");
+        appointment = db.AppointmentDAO().getAppointmentById(appointment.id);
         if (appointment != null) {
             patient = appointment.getPatient(db);
 
-            DateTimeFormatter parser = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            DateTimeFormatter parser = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate dob = LocalDate.parse(patient.getDob(), parser);
             long age = ChronoUnit.YEARS.between(dob, LocalDate.now());
 
@@ -71,7 +71,7 @@ public class MenuFragment extends Fragment {
         if (appointment != null) {
             patient = appointment.getPatient(db);
 
-            DateTimeFormatter parser = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            DateTimeFormatter parser = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate dob = LocalDate.parse(patient.getDob(), parser);
             long age = ChronoUnit.YEARS.between(dob, LocalDate.now());
 
@@ -91,6 +91,7 @@ public class MenuFragment extends Fragment {
         binding.buttonHealthCondition.setOnClickListener(v -> {
             // Replace with your desired activity or fragment
             Intent intent = new Intent(getActivity(), HealthConditionsActivity.class); // Example activity
+            intent.putExtra("patient_model", patient);
             startActivity(intent);
         });
 
@@ -98,18 +99,21 @@ public class MenuFragment extends Fragment {
         binding.buttonMedications.setOnClickListener(v -> {
             // Replace with your desired activity or fragment
             Intent intent = new Intent(getActivity(), MedicationsActivity.class); // Example activity
+            intent.putExtra("patient_model", patient);
             startActivity(intent);
         });
         // Set click listener for the "Health Conditions" button
         binding.buttonAnalysis.setOnClickListener(v -> {
             // Replace with your desired activity or fragment
             Intent intent = new Intent(getActivity(), AnalysisPageActivity.class); // Example activity
+            intent.putExtra("appointment_model", appointment);
             startActivity(intent);
         });
         // Set click listener for the "Health Conditions" button
         binding.buttonLabReports.setOnClickListener(v -> {
             // Replace with your desired activity or fragment
             Intent intent = new Intent(getActivity(), LabReportsActivity.class); // Example activity
+            intent.putExtra("appointment_model", appointment);
             startActivity(intent);
         });
 
@@ -117,6 +121,7 @@ public class MenuFragment extends Fragment {
         binding.buttonUpcomingAppointments.setOnClickListener(v -> {
             // Replace with your desired activity or fragment
             Intent intent = new Intent(getActivity(), UpcomingAppointmentsActivity.class); // Example activity
+            intent.putExtra("patient_model", patient);
             startActivity(intent);
         });
 

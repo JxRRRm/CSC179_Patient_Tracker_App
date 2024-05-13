@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.csc179_patient_tracker_app.data.AppointmentModel;
 
@@ -19,8 +20,14 @@ public interface AppointmentDAO {
     @Query("SELECT COUNT(*) FROM Appointments")
     int getAppointmentCount();
 
+    @Update
+    void updateAppointment(AppointmentModel appointmentModel);
+
     @Insert
     void insertAppointment(AppointmentModel... appointment);
+
+    @Query("SELECT * FROM Appointments WHERE id = :id")
+    AppointmentModel getAppointmentById(int id);
 
     // Query to retrieve patient's first, middle, and last name using patientId from AppointmentsTable
     @Query("SELECT p.first_name || ' ' || p.middle_name || ' ' || p.last_name " +

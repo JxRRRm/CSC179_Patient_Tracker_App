@@ -15,5 +15,9 @@
         android:id="@+id/navigation_appointment"
         android:icon="@drawable/add_24px"
         android:title="New Appointment" />
+    <item
+        android:id="@+id/navigation_logout"
+        android:icon="@drawable/logout_24px"
+        android:title="Logout" />
 
 </menu>

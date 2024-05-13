@@ -11,6 +11,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.csc179_patient_tracker_app.data.MyAppDB;
+import com.example.csc179_patient_tracker_app.data.PatientModel;
+
 public class HealthConditionsActivity extends AppCompatActivity {
     private boolean editMode = false;
 
@@ -18,6 +21,8 @@ public class HealthConditionsActivity extends AppCompatActivity {
     private EditText previousIllnesses;
     private EditText specificAllergies;
     private Button saveEditButton;
+    private PatientModel patientModel;
+    private MyAppDB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +35,24 @@ public class HealthConditionsActivity extends AppCompatActivity {
             return insets;
         });
 
+        db = MyAppDB.getDbInstance(this);
+        this.patientModel = getIntent().getParcelableExtra("patient_model");
+
         currentIllnesses = findViewById(R.id.current_illnesses_field);
         previousIllnesses = findViewById(R.id.previous_illnesses_field);
         specificAllergies = findViewById(R.id.specific_allergies_field);
         saveEditButton = findViewById(R.id.save_edit_button);
+
+        currentIllnesses.setText(patientModel.getCurrentIllnesses());
+        previousIllnesses.setText(patientModel.getPreviousIllnesses());
+        specificAllergies.setText(patientModel.getSpecificAllergies());
 
         saveEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(editMode) {
                     readMode();
-                    // save to database
+                    saveToDatabase();
                 } else {
                     editMode();
                 }
@@ -48,6 +60,14 @@ public class HealthConditionsActivity extends AppCompatActivity {
         });
 
         readMode();
+    }
+
+    private void saveToDatabase() {
+        patientModel.setCurrentIllnesses(currentIllnesses.getText().toString());
+        patientModel.setPreviousIllnesses(previousIllnesses.getText().toString());
+        patientModel.setSpecificAllergies(specificAllergies.getText().toString());
+
+        db.PatientDAO().updatePatient(patientModel);
     }
 
     private void readMode() {

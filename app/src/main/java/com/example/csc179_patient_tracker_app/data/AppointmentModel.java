@@ -23,9 +23,19 @@ public class AppointmentModel implements Comparable<AppointmentModel>, Parcelabl
     public String appointmentTime;
     @ColumnInfo(name = "reason")
     public String reason;
+    @ColumnInfo(name = "symptoms")
+    public String symptoms;
+    @ColumnInfo(name = "diagnosis")
+    public String diagnosis;
+    @ColumnInfo(name = "treatment_plan")
+    public String treatmentPlan;
+
+    @ColumnInfo(name = "lab_report")
+    public String labReport;
 
     public AppointmentModel() {
     }
+
     public AppointmentModel(int patientId, String date, String appointmentTime, String reason) {
         this.patientId = patientId;
         this.date = date;
@@ -34,8 +44,33 @@ public class AppointmentModel implements Comparable<AppointmentModel>, Parcelabl
     }
 
     protected AppointmentModel(Parcel in) {
-        reason = in.readString();
+        id = in.readInt();
+        patientId = in.readInt();
         date = in.readString();
+        appointmentTime = in.readString();
+        reason = in.readString();
+        symptoms = in.readString();
+        diagnosis = in.readString();
+        treatmentPlan = in.readString();
+        labReport = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(patientId);
+        dest.writeString(date);
+        dest.writeString(appointmentTime);
+        dest.writeString(reason);
+        dest.writeString(symptoms);
+        dest.writeString(diagnosis);
+        dest.writeString(treatmentPlan);
+        dest.writeString(labReport);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<AppointmentModel> CREATOR = new Creator<AppointmentModel>() {
@@ -83,6 +118,30 @@ public class AppointmentModel implements Comparable<AppointmentModel>, Parcelabl
         return appointmentTime;
     }
 
+    public String getSymptoms() {
+        return symptoms;
+    }
+
+    public void setSymptoms(String symptoms) {
+        this.symptoms = symptoms;
+    }
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
+    }
+
+    public String getTreatmentPlan() {
+        return treatmentPlan;
+    }
+
+    public void setTreatmentPlan(String treatmentPlan) {
+        this.treatmentPlan = treatmentPlan;
+    }
+
     public void setAppointmentTime(String appointmentTime) {
         this.appointmentTime = appointmentTime;
     }
@@ -93,6 +152,14 @@ public class AppointmentModel implements Comparable<AppointmentModel>, Parcelabl
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public String getLabReport() {
+        return labReport;
+    }
+
+    public void setLabReport(String labReport) {
+        this.labReport = labReport;
     }
 
     @Override
@@ -112,17 +179,4 @@ public class AppointmentModel implements Comparable<AppointmentModel>, Parcelabl
         // Assuming you have a String attribute called "name"
         return this.date.compareTo(o.date);
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeString(reason);
-        dest.writeString(date);
-    }
-
-
 }

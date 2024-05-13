@@ -1,6 +1,7 @@
 package com.example.csc179_patient_tracker_app;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,11 +12,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.csc179_patient_tracker_app.data.MyAppDB;
+import com.example.csc179_patient_tracker_app.data.PatientModel;
+
 public class MedicationsActivity extends AppCompatActivity {
     private boolean editMode = false;
     private EditText currentMedications;
     private EditText pastMedications;
     private Button saveEditButton;
+    private PatientModel patientModel;
+    private MyAppDB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,15 +34,22 @@ public class MedicationsActivity extends AppCompatActivity {
             return insets;
         });
 
+        this.patientModel = getIntent().getParcelableExtra("patient_model");
+        db = MyAppDB.getDbInstance(this);
+
         currentMedications = findViewById(R.id.current_medications_field);
         pastMedications = findViewById(R.id.past_medications_field);
         saveEditButton = findViewById(R.id.save_edit_button);
+
+        currentMedications.setText(patientModel.getCurrentMedications());
+        pastMedications.setText(patientModel.getPastMedications());
 
         saveEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(editMode) {
                     readMode();
+                    saveToDatabase();
                 } else {
                     editMode();
                 }
@@ -44,6 +57,13 @@ public class MedicationsActivity extends AppCompatActivity {
         });
 
         readMode();
+    }
+
+    private void saveToDatabase() {
+        patientModel.setCurrentMedications(currentMedications.getText().toString());
+        patientModel.setPastMedications(pastMedications.getText().toString());
+
+        db.PatientDAO().updatePatient(patientModel);
     }
 
     private void readMode() {

@@ -11,10 +11,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.csc179_patient_tracker_app.data.AppointmentModel;
+import com.example.csc179_patient_tracker_app.data.MyAppDB;
+
 public class LabReportsActivity extends AppCompatActivity {
     private boolean editMode = false;
     private EditText labReport;
     private Button saveEditButton;
+    private AppointmentModel appointmentModel;
+    private MyAppDB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +32,20 @@ public class LabReportsActivity extends AppCompatActivity {
             return insets;
         });
 
+        appointmentModel = getIntent().getParcelableExtra("appointment_model");
+        db = MyAppDB.getDbInstance(this);
+
         labReport = findViewById(R.id.lab_report_field);
         saveEditButton = findViewById(R.id.save_edit_button);
+
+        labReport.setText(appointmentModel.getLabReport());
 
         saveEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(editMode) {
                     readMode();
+                    saveToDatabase();
                 } else {
                     editMode();
                 }
@@ -42,6 +53,12 @@ public class LabReportsActivity extends AppCompatActivity {
         });
 
         readMode();
+    }
+
+    public void saveToDatabase() {
+        appointmentModel.setLabReport(labReport.getText().toString());
+
+        db.AppointmentDAO().updateAppointment(appointmentModel);
     }
 
     public void readMode() {

@@ -56,8 +56,17 @@ public class PatientSearchRecyclerAdapter extends RecyclerView.Adapter<PatientSe
         return patients.size();
     }
 
-    public void search(String firstName, String middleName, String lastName, String dob, String phoneNumber) {
+    public void resetSearch() {
+        patients.clear();
+        notifyDataSetChanged();
+    }
+    public void search(String firstName, String middleName, String lastName) {
         patients = db.PatientDAO().searchPatients(firstName, middleName, lastName);
+        notifyDataSetChanged();
+    }
+
+    public void search(String firstName, String middleName, String lastName, String dob, String medicalId) {
+        patients = db.PatientDAO().searchPatients(firstName, middleName, lastName, dob, medicalId);
         notifyDataSetChanged();
     }
 

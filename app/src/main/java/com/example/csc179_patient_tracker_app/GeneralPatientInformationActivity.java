@@ -86,6 +86,9 @@ public class GeneralPatientInformationActivity extends AppCompatActivity {
             phoneNumber.setText(patientModel.getHomePhone());
             mobileNumber.setText(patientModel.getMobilePhone());
             emailAddress.setText(patientModel.getEmail());
+            emergencyFullName.setText(patientModel.getEmergencyFullName());
+            emergencyRelation.setText(patientModel.getEmergencyRelation());
+            emergencyPhoneNumber.setText(patientModel.getEmergencyPhoneNumber());
         }
 
         readMode();
@@ -116,6 +119,9 @@ public class GeneralPatientInformationActivity extends AppCompatActivity {
         patientModel.setHomePhone(phoneNumber.getText().toString());
         patientModel.setMobilePhone(mobileNumber.getText().toString());
         patientModel.setEmail(emailAddress.getText().toString());
+        patientModel.setEmergencyFullName(emergencyFullName.getText().toString());
+        patientModel.setEmergencyRelation(emergencyRelation.getText().toString());
+        patientModel.setEmergencyPhoneNumber(emergencyPhoneNumber.getText().toString());
 
         db.PatientDAO().updatePatient(patientModel);
     }

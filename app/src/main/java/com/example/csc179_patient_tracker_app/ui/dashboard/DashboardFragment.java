@@ -1,5 +1,6 @@
 package com.example.csc179_patient_tracker_app.ui.dashboard;
 
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,7 +42,8 @@ public class DashboardFragment extends Fragment {
         View root = binding.getRoot();
 
         appointmentRecycler = root.findViewById(R.id.appointment_recycler);
-        appointmentRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        appointmentRecycler.setLayoutManager(layoutManager);
         db = MyAppDB.getDbInstance(getContext());
 
         navController = NavHostFragment.findNavController(this);
@@ -53,10 +56,8 @@ public class DashboardFragment extends Fragment {
         });
 
         appointmentRecycler.setAdapter(adapter);
-
-
-
-
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), layoutManager.getOrientation());
+        appointmentRecycler.addItemDecoration(dividerItemDecoration);
 
         return root;
     }

@@ -5,9 +5,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/layout_border"
     tools:context=".UpcomingAppointmentsActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="64dp"
@@ -93,5 +95,15 @@
             android:text="Edit" />
 
     </LinearLayout>
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/primary_blue"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.13"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
